@@ -74,3 +74,26 @@ idiomas e tamanhos de janela) e trunca seu conteúdo.
         <Button Margin="3" MaxWidth="200" MinWidth="100">Botão 4</Button>
     </StackPanel>
 ```
+
+### The Border (A Borda)
+
+![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/14.png)
+
+- Background : Define um plano de fundo que aparece atrás de todo o conteúdo na borda usando um objeto de pincel. Você pode usar uma cor sólida ou algo mais exótico.
+
+- BorderBrush and BorderThickness : Define a cor da borda que aparece na borda do objeto Borda, usando um Objeto de pincel e define a largura da borda, respectivamente. Para mostrar uma fronteira, você deve definir ambas as propriedades.
+
+- CornerRadius : Permite que você contorne graciosamente os cantos de sua borda. Quanto maior o CornerRadius, mais dramático é o efeito de arredondamento.
+
+- Padding : Adiciona espaçamento entre a borda e o conteúdo interno. (Por outro lado, Margin adiciona espaçamento fora da borda.)
+
+```
+<Border Margin="5" Padding="5" Background="LightYellow" BorderBrush="SteelBlue" 
+            BorderThickness="3,5,3,5" CornerRadius="3" VerticalAlignment="Top">
+        <StackPanel>
+            <Button Margin="3">Um</Button>
+            <Button Margin="3">Dois</Button>
+            <Button Margin="3">Três</Button>
+        </StackPanel>
+    </Border>
+```
