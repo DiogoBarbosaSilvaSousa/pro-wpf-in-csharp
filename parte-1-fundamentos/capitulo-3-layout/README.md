@@ -60,7 +60,7 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
 ![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/13.png)
 
 <p>
-**Dica** : Pense duas vezes antes de definir um tamanho explícito no WPF. Em um layout bem projetado, não deve ser necessário. Se você
+** Dica ** : Pense duas vezes antes de definir um tamanho explícito no WPF. Em um layout bem projetado, não deve ser necessário. Se você
 adicionar informações de tamanho, você corre o risco de criar um layout mais frágil que não pode se adaptar às mudanças (como
 idiomas e tamanhos de janela) e trunca seu conteúdo.
  </p>
