@@ -40,3 +40,19 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
         <Button>Botão 4</Button>
     </StackPanel>
 ```
+
+### Margin
+![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/12.png)
+
+```
+ <StackPanel Margin="3">
+        <Label Margin="3" HorizontalAlignment="Center">
+            Uma pilha de botões
+        </Label>
+        <Button Margin="3" HorizontalAlignment="Left">Botão 1</Button>
+        <Button Margin="3" HorizontalAlignment="Right">Botão 2</Button>
+        <Button Margin="3">Botão 3</Button>
+        <Button Margin="3">Botão 4</Button>
+    </StackPanel>
+```
+
