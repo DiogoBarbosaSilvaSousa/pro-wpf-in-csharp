@@ -97,3 +97,27 @@ idiomas e tamanhos de janela) e trunca seu conteúdo.
         </StackPanel>
     </Border>
 ```
+
+## O WrapPanel e  DockPanel
+
+<p>
+Obviamente, o StackPanel sozinho não pode ajudá-lo a criar uma interface de usuário realista. Para completar a imagem, o
+StackPanel precisa trabalhar com outros contêineres de layout mais capazes. Só então você pode montar uma janela completa.
+</p>
+
+<p>
+O contêiner de layout mais sofisticado é o Grid, que você considerará posteriormente neste capítulo. Mas rimeiro, vale a pena olhar para WrapPanel e DockPanel, 
+ que são mais dois do layout simples de contêineres fornecidos pela WPF. Eles complementam o StackPanel, oferecendo diferentes comportamentos de layout.
+</p>
+
+### O WrapPanel
+
+<p> 
+O WrapPanel apresenta os controles no espaço disponível, uma linha ou coluna por vez. Por padrão, o propriedade WrapPanel.Orientation é definida como Horizontal; os controles são organizados da esquerda para a direita e, em seguida, linhas subsequentes. No entanto, você pode usar Vertical para colocar elementos em várias colunas.
+</p>
+
+![SimpleWrapPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/15.png)
+
+<p>
+A Figura mostra como os botões são agrupados para caber no tamanho atual do WrapPanel (que é determinado pelo tamanho da janela que o contém). Como este exemplo demonstra, um WrapPanel em o modo horizontal cria uma série de linhas imaginárias, cada uma delas com a altura da mais altaelemento contido. Outros controles podem ser esticados para caber ou alinhados de acordo com o VerticalAlignment propriedade. No exemplo à esquerda na Figura, todos os botões se encaixam em uma linha alta e são esticados ou alinhado para caber. No exemplo à direita, vários botões foram colocados na segunda linha. Porque a segunda linha não inclui um botão excepcionalmente alto, a altura da linha é mantida no botão mínimo altura. Como resultado, não importa qual configuração de VerticalAlignment os vários botões nesta linha usam.
+</p>
