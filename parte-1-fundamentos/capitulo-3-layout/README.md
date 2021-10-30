@@ -26,7 +26,7 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
 #### Alinhamento
 ![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/11.png)
 
-´´´
+```
 <Window x:Class="SimpleStackAlignment.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -43,4 +43,4 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
         <Button>Botão 4</Button>
     </StackPanel>
 </Window>
-´´´
+```
