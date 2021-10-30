@@ -26,6 +26,11 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
 #### Alinhamento
 ![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/11.png)
 
+<p>
+ O tamanho usado na minha janela (Window) foi Height="223" Width="354" .
+</p>
+
+
 ```
 <Window x:Class="SimpleStackAlignment.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
