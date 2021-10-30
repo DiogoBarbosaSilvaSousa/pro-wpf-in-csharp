@@ -23,7 +23,7 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
 
 - **Width and Height** : Define explicitamente o tamanho de um elemento. Esta configuração substitui um valor Stretch para o Propriedades HorizontalAlignment ou VerticalAlignment. No entanto, este tamanho não será honrado se estiver fora dos limites definidos pelo MinWidth, MinHeight, MaxWidth e MaxHeight.
 
-#### Alinhamento
+#### Alignment (Alinhamento)
 ![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/11.png)
 
 <p>
@@ -41,7 +41,7 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
     </StackPanel>
 ```
 
-### Margin
+### Margin (Margem)
 ![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/12.png)
 
 ```
@@ -55,4 +55,24 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
         <Button Margin="3">Botão 4</Button>
     </StackPanel>
 ```
+### Minimum, Maximum, and Explicit Sizes (Mínimo, máximo e tamanho explícito)
 
+![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/13.png)
+
+<p>
+**Dica** : Pense duas vezes antes de definir um tamanho explícito no WPF. Em um layout bem projetado, não deve ser necessário. Se você
+adicionar informações de tamanho, você corre o risco de criar um layout mais frágil que não pode se adaptar às mudanças (como
+idiomas e tamanhos de janela) e trunca seu conteúdo.
+ </p>
+
+```
+<StackPanel Margin="3">
+        <Label Margin="3" HorizontalAlignment="Center">
+            Uma pilha de botões
+        </Label>
+        <Button Margin="3" MaxWidth="200" MinWidth="100">Botão 1</Button>
+        <Button Margin="3" MaxWidth="200" MinWidth="100">Botão 2</Button>
+        <Button Margin="3" MaxWidth="200" MinWidth="100">Botão 3</Button>
+        <Button Margin="3" MaxWidth="200" MinWidth="100">Botão 4</Button>
+    </StackPanel>
+```
