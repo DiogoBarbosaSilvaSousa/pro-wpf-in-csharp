@@ -22,3 +22,21 @@
 as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stretch.
 
 - **Width and Height** : Define explicitamente o tamanho de um elemento. Esta configuração substitui um valor Stretch para o Propriedades HorizontalAlignment ou VerticalAlignment. No entanto, este tamanho não será honrado se estiver fora dos limites definidos pelo MinWidth, MinHeight, MaxWidth e MaxHeight.
+
+#### Alinhamento
+![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/11.png)
+
+<p>
+ O tamanho usado na minha janela (Window) foi Height="223" Width="354" .
+</p>
+
+
+```
+    <StackPanel>
+        <Label HorizontalAlignment="Center">Uma pilha de botões</Label>
+        <Button HorizontalAlignment="Left">Botão 1</Button>
+        <Button HorizontalAlignment="Right">Botão 2</Button>
+        <Button>Botão 3</Button>
+        <Button>Botão 4</Button>
+    </StackPanel>
+```
