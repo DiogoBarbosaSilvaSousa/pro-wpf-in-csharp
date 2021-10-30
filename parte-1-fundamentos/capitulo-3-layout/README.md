@@ -27,7 +27,7 @@ as propriedades HorizontalAlignment e VerticalAlignment são definidas como Stre
 ![SimpleStack](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/11.png)
 
 <p>
- O tamanho usado na minha janela (<Window></Window>) foi Height="223" Width="354" .
+ O tamanho usado na minha janela (\<Window\>\</Window\>) foi Height="223" Width="354" .
 </p>
 
 
