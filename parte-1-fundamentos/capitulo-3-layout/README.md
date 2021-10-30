@@ -116,6 +116,18 @@ O contêiner de layout mais sofisticado é o Grid, que você considerará poster
 O WrapPanel apresenta os controles no espaço disponível, uma linha ou coluna por vez. Por padrão, o propriedade WrapPanel.Orientation é definida como Horizontal; os controles são organizados da esquerda para a direita e, em seguida, linhas subsequentes. No entanto, você pode usar Vertical para colocar elementos em várias colunas.
 </p>
 
+O tamanho da janela (Window) Height="200" Width="440".
+
+```
+ <WrapPanel Margin="3">
+        <Button VerticalAlignment="Top">Botão em cima</Button>
+        <Button MinHeight="60">Botão Alto</Button>
+        <Button VerticalAlignment="Bottom">Botão em baixo</Button>
+        <Button>Botão esticado</Button>
+        <Button VerticalAlignment="Center">Botão centralizado</Button>
+    </WrapPanel>
+```
+
 ![SimpleWrapPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/15.png)
 
 <p>
