@@ -238,3 +238,88 @@ A grade separa os elementos em uma grade invisível de linhas e colunas embora m
 </p>
 
 **Dica** : Embora o Grid seja projetado para ser invisível, você pode definir a propriedade **Grid.ShowGridLines** como true para obter um olhar mais de perto. Este recurso não se destina realmente a embelezar uma janela. Em vez disso, é uma conveniência de depuração que é projetado para ajudá-lo a entender como a grade se subdividiu em regiões menores. Este recurso é importante porque você tem a capacidade de controlar exatamente como a grade escolhe as larguras das colunas e as alturas das linhas.
+
+```
+<Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0">Esquerda superior</Button>
+        <Button Grid.Row="0" Grid.Column="1">Meio Esquerdo</Button>
+        <Button Grid.Row="1" Grid.Column="2">Direita inferior</Button>
+        <Button Grid.Row="1" Grid.Column="1">Meio inferior</Button>
+ </Grid>
+```
+
+![SimpleGrid](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/20.png)
+
+
+**Nota** : A grade ajusta elementos em linhas e colunas predefinidas. Isso é diferente de contêineres de layout, como o WrapPanel e o StackPanel que criam linhas ou colunas implícitas à medida que organizam seus filhos. Se você quiser criar uma grade que tenha mais de uma linha e uma coluna, você deve definir suas linhas e colunas explicitamente usando objetos RowDefinition e ColumnDefinition.
+
+### Usando o GRID no Visual Studio
+
+<p>
+Quando você usa uma grade na superfície de design do Visual Studio, você descobrirá que ela funciona de maneira um pouco diferente das outros recipientes e containêres de layout. À medida que você arrasta um elemento para uma grade, o Visual Studio permite que você o coloque em um local preciso. 
+O Visual Studio faz essa mágica definindo a propriedade Margin do seu elemento.
+</p>
+
+<p>
+Ao definir as margens, o Visual Studio usa o canto mais próximo. Por exemplo, se o seu elemento estiver mais próximo do canto superior esquerdo da grade, o Visual Studio preenche as margens superior e esquerda para posicionar o elemento (e deixa o margens direita e inferior em 0). Se você arrastar seu elemento para baixo mais perto do canto inferior esquerdo, o Visual Studio define as margens inferior e esquerda em vez disso e define a propriedade VerticalAlignment como Bottom. Isso obviamente afeta como o elemento se moverá quando a grade for redimensionada.
+ </p>
+ 
+ <p>
+O processo de definição de margem do Visual Studio parece bastante direto, mas na maioria das vezes ele não cria os resultados que você deseja. Normalmente, você desejará um layout de fluxo mais flexível que permita que alguns elementos se expandam dinamicamente e empurre os outros para fora do caminho. Neste cenário, você descobrirá que codificar uma posição com a propriedade da margem é extremamente inflexível. 
+ </p>
+ 
+ <p>
+Os problemas pioram quando você adiciona vários elementos, porque O Visual Studio não adiciona novas células automaticamente. Como resultado, todos os elementos serão colocados na mesma célula. Diferentes elementos podem ser alinhados a diferentes cantos da grade, o que fará com que eles se movam com relação um ao outro (e até mesmo se sobrepõem) conforme a janela é redimensionada.
+ </p>
+ 
+ <p>
+Depois de entender como funciona o Grid, você pode corrigir esses problemas. O primeiro truque é configurar sua Grade antes de começar a adicionar elementos, definindo suas linhas e colunas. (Você pode editar o RowDefinitions e coleções ColumnDefinitions usando a janela Propriedades.) Depois de configurar o Grid, você pode arrastar e soltar os elementos que você deseja na grade e definir suas configurações de margem e alinhamento na janela de propriedades ou editando o XAML manualmente.
+ </p>
+ 
+ ### Ajuste finos de linhas e colunas
+ 
+ O Grid oferece suporte a três estratégias de dimensionamento:
+ 
+ - ***Tamanhos absolutos*** : você escolhe o tamanho exato usando unidades independentes de dispositivo. Essa é a estratégia menos útil porque não é flexível o suficiente para lidar com mudanças de tamanho do conteúdo, alteração do tamanho do contêiner ou localização.
+ 
+ - ***Tamanhos automáticos*** : cada linha ou coluna recebe exatamente a quantidade de espaço que possui de acordo com suas necessidades, e nada mais. Este é um dos modos de dimensionamento mais úteis.
+ 
+ - ***Tamanhos proporcionais*** : o espaço é dividido entre um grupo de linhas ou colunas. Isto é a configuração padrão para todas as linhas e colunas. Por exemplo veja que todas as células aumentam de tamanho proporcionalmente à medida que a grade se expande em uma janela. 
+
+
+Para obter o máximo de flexibilidade, você pode misturar e combinar esses modos de dimensionamento. Por exemplo, muitas vezes é útil criar várias linhas de tamanho automático e deixar uma ou duas linhas restantes obter o espaço restante através do dimensionamento proporcional.
+Você define o modo de dimensionamento usando a propriedade Width do objeto ColumnDefinition ou a propriedade Height do objeto RowDefinition. Por exemplo, aqui está como você define uma largura absoluta de 100 unidades independentes do dispositivo:
+
+```
+<ColumnDefinition Width = "100"> </ColumnDefinition>
+```
+
+Para usar o dimensionamento automático, você usa um valor de Auto:
+
+```
+<ColumnDefinition Width = "Auto"> </ColumnDefinition>
+```
+
+Finalmente, para usar o dimensionamento proporcional, você usa um asterisco (*):
+
+```
+<ColumnDefinition Width = "*"> </ColumnDefinition>
+```
+
+Se você usar uma combinação de dimensionamento proporcional e outros modos de dimensionamento, as linhas de tamanho proporcional ou colunas obtêm todo o espaço que sobra.
+Se você quiser dividir o espaço restante de forma desigual, você pode atribuir um peso que você deve colocar antes do asterisco. Por exemplo, se você tiver duas linhas de tamanho proporcional e quiser que a primeira seja metade da altura da segunda, você poderia compartilhar o espaço restante assim:
+```
+<RowDefinition Height = "*"> </RowDefinition>
+<RowDefinition Height = "2 *"> </RowDefinition>
+```
+Isso informa ao Grid que a altura da segunda linha deve ser duas vezes a altura da primeira linha. Você pode usar os números que desejar para distribuir o espaço extra.
