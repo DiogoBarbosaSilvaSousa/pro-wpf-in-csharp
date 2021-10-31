@@ -171,7 +171,18 @@ Este exemplo também define LastChildFill como true, o que diz ao DockPanel para
 <p>
  Claramente, ao encaixar os controles, a ordem é importante. Neste exemplo, os botões superior e inferior obtem a largura total do DockPanel porque eles são encaixados primeiro. Quando os botões esquerdo e direito são encaixados em seguida, eles se encaixam entre esses dois botões. Se você inverter esta ordem, os botões esquerdo e direito ocuparão o
 lados inteiros, e os botões superior e inferior se tornariam mais estreitos porque seriam encaixados entre os dois botões laterais.
- </p>
+ 
+ ```
+<DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Left">Botão esquerda</Button>
+        <Button DockPanel.Dock="Right">Botão direito</Button>
+        <Button DockPanel.Dock="Top">Botão superior</Button>
+        <Button DockPanel.Dock="Bottom">Botão inferior</Button>        
+        <Button>Espaço restante</Button>
+    </DockPanel>
+ ```
+ 
+</p>
  
  ![SimpleDockPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/17.png)
  
