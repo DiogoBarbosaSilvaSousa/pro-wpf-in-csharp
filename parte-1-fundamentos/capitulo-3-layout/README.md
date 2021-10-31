@@ -236,3 +236,5 @@ novo documento XAML para uma janela no Visual Studio, ele adiciona automaticamen
 <p>
 A grade separa os elementos em uma grade invisível de linhas e colunas embora mais de uma elemento pode ser colocado em uma única célula (nesse caso, eles se sobrepõem), geralmente faz sentido colocar apenas um único elemento por célula. Claro, esse elemento pode ser outro contêiner(DockPanel, WrapPanel e StackPanel) de layout que organiza seu próprio grupo de controles contidos.
 </p>
+
+**Dica** : Embora o Grid seja projetado para ser invisível, você pode definir a propriedade **Grid.ShowGridLines** como true para obter um olhar mais de perto. Este recurso não se destina realmente a embelezar uma janela. Em vez disso, é uma conveniência de depuração que é projetado para ajudá-lo a entender como a grade se subdividiu em regiões menores. Este recurso é importante porque você tem a capacidade de controlar exatamente como a grade escolhe as larguras das colunas e as alturas das linhas.
