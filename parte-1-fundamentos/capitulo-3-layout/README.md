@@ -345,3 +345,27 @@ Isso informa ao Grid que a altura da segunda linha deve ser duas vezes a altura 
 Essa marcação é um pouco mais longa, mas tem a vantagem de declarar os controles na ordem em que devem aparecer, o que torna mais fácil de entender. Neste caso, a abordagem que você adota é simplesmente uma questão de preferência. E se quiser, você pode substituir o StackPanel por uma Grid de uma linha e duas colunas.
 
 ***Nota*** : Você pode criar quase qualquer interface usando contêineres Grid aninhados (Um Grid dentro do outro). (Uma exceção são linhas quebradas ou colunas que usam o WrapPanel.) No entanto, quando você está lidando com pequenas seções da interface do usuário ou criando um pequeno número de elementos, muitas vezes é mais simples usar os contêineres StackPanel e DockPanel mais especializados e simples de usar.
+
+### Arredondamento de Layout (Problemas com o arredondamento no cálculo da divisão do Layout)
+<p>
+O WPF usa um sistema de medição que é independente de resolução. Isso permite uma flexibilidade enorme ao trabalhar com uma variedade de hardwares mas às vezes apresenta suas próprias peculiaridades em alguns casos. Um exemplo é uma coordenada na divisão de um determinado pixel pode não se alinhar perfeitamente ao pixel físico de uma tela.
+</p>
+
+<p>
+Imagine que você tem um Grid de duas colunas e 200 pixels para trabalhar(dividir) entre essas duas geralmente isso não é um problema afinal são 100 pixels para cada coluna se você distribuir igualmente mas se você tiver uma grade com 175 pixels essa não vai ser uma divisão "limpa" pois cada coluna deveria ter 87,5 pixels. Isso basicamente significa que a segunda coluna vai está ligeiramente deslocada dos limites do pixel comuns.
+</p>
+
+<p>
+Na maior parte dos casos isso pode não ser um problema mas se você tiver algum elemento, figura ou borda justamente próximo deste canto específico o conteúdo pode parecer borrado porque o WPF usa anti-aliasing para "mesclar".
+</p>
+
+Se esse problema afetar seu layout, há uma solução fácil. Basta definir a propriedade UseLayoutRounding como true em seu contêiner de layout:
+
+```
+<Grid UseLayoutRounding = "True">
+```
+
+Agora o WPF irá garantir que todo o conteúdo nesse recipiente(container) do layout seja ajustado ao pixel mais próximo do limite, removendo qualquer borrão.
+
+
+
