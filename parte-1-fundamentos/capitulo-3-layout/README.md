@@ -221,4 +221,7 @@ Por exemplo, imagine que você deseja criar uma caixa de diálogo padrão com um
         <TextBox DockPanel.Dock="Top" Margin="10">Isto é um teste.</TextBox>
  </DockPanel>
 ```
+
+Percebam que o **TextBox** vai por último justamente para ocupar todo o espaço restante como demonstrado nos exemplos anteriores.
+
 ![BasicDialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/19.png)
