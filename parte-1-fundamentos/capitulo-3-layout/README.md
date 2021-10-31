@@ -238,3 +238,27 @@ A grade separa os elementos em uma grade invisível de linhas e colunas embora m
 </p>
 
 **Dica** : Embora o Grid seja projetado para ser invisível, você pode definir a propriedade **Grid.ShowGridLines** como true para obter um olhar mais de perto. Este recurso não se destina realmente a embelezar uma janela. Em vez disso, é uma conveniência de depuração que é projetado para ajudá-lo a entender como a grade se subdividiu em regiões menores. Este recurso é importante porque você tem a capacidade de controlar exatamente como a grade escolhe as larguras das colunas e as alturas das linhas.
+
+```
+<Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0">Esquerda superior</Button>
+        <Button Grid.Row="0" Grid.Column="1">Meio Esquerdo</Button>
+        <Button Grid.Row="1" Grid.Column="2">Direita inferior</Button>
+        <Button Grid.Row="1" Grid.Column="1">Meio inferior</Button>
+ </Grid>
+```
+
+![SimpleGrid](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/20.png)
+
+
+**Nota** : A grade ajusta elementos em linhas e colunas predefinidas. Isso é diferente de contêineres de layout, como o WrapPanel e o StackPanel que criam linhas ou colunas implícitas à medida que organizam seus filhos. Se você quiser criar uma grade que tenha mais de uma linha e uma coluna, você deve definir suas linhas e colunas explicitamente usando objetos RowDefinition e ColumnDefinition.
