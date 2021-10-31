@@ -374,9 +374,9 @@ Você já viu como colocar elementos em células usando as propriedades anexadas
 
 Por exemplo, este botão ocupará todo o espaço disponível na primeira e na segunda célula do primeira e segunda linha na fileira da primeira coluna:
 
-´´´
+```
 <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">Botão Span</Button>
-´´´
+```
 
 E este botão se estenderá por quatro células no total, abrangendo duas colunas e duas linhas:
 
