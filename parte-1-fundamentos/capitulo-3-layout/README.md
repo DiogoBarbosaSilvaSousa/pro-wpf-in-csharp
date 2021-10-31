@@ -225,3 +225,14 @@ Por exemplo, imagine que você deseja criar uma caixa de diálogo padrão com um
 Percebam que o **TextBox** vai por último justamente para ocupar todo o espaço restante como demonstrado nos exemplos anteriores.
 
 ![BasicDialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/19.png)
+
+## O Grid
+
+<p>
+O Grid é o contêiner de layout mais poderoso do WPF. Muito do que você pode realizar com o outro controles de layout também são possíveis com a grade. A grade também é uma ferramenta ideal para esculpir sua janela em regiões menores que você pode gerenciar com outros painéis. Na verdade, a grade é tão útil que quando você adiciona um
+novo documento XAML para uma janela no Visual Studio, ele adiciona automaticamente as tags Grid como o primeiro nível container, alinhado dentro do elemento Window raiz.
+</p>
+
+<p>
+A grade separa os elementos em uma grade invisível de linhas e colunas embora mais de uma elemento pode ser colocado em uma única célula (nesse caso, eles se sobrepõem), geralmente faz sentido colocar apenas um único elemento por célula. Claro, esse elemento pode ser outro contêiner(DockPanel, WrapPanel e StackPanel) de layout que organiza seu próprio grupo de controles contidos.
+</p>
