@@ -164,4 +164,4 @@ Este exemplo também define LastChildFill como true, o que diz ao DockPanel para
     </DockPanel>
 ```
 
-![SimpleDockPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/15.png)
+![SimpleDockPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/16.png)
