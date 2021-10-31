@@ -133,3 +133,22 @@ O tamanho da janela (Window) Height="200" Width="440".
 <p>
 A Figura mostra como os botões são agrupados para caber no tamanho atual do WrapPanel (que é determinado pelo tamanho da janela que o contém). Como este exemplo demonstra, um WrapPanel em o modo horizontal cria uma série de linhas imaginárias, cada uma delas com a altura da mais altaelemento contido. Outros controles podem ser esticados para caber ou alinhados de acordo com o VerticalAlignment propriedade. No exemplo à esquerda na Figura, todos os botões se encaixam em uma linha alta e são esticados ou alinhado para caber. No exemplo à direita, vários botões foram colocados na segunda linha. Porque a segunda linha não inclui um botão excepcionalmente alto, a altura da linha é mantida no botão mínimo altura. Como resultado, não importa qual configuração de VerticalAlignment os vários botões nesta linha usam.
 </p>
+
+## DockPanel
+
+<p>
+O DockPanel é uma opção de layout mais interessante. Ele estende os controles contra uma de suas bordas externas.
+A maneira mais fácil de visualizar isso é pensar nas barras de ferramentas que ficam na parte superior de muitos aplicativos do Windows.
+Essas barras de ferramentas são encaixadas na parte superior da janela. Tal como acontece com o StackPanel, os elementos encaixados podem escolher
+um aspecto de seu layout.
+</p>
+
+<p>
+Por exemplo, se você encaixar um botão na parte superior de um DockPanel, ele é esticado por toda a largura do DockPanel, mas dada a altura necessária (com base no conteúdo e na propriedade MinHeight). Por outro lado, se você encaixar um botão no lado esquerdo de um contêiner, sua altura será
+esticada para caber no contêiner, mas sua largura é livre para crescer conforme necessário.
+</p>
+
+<p>
+A pergunta óbvia é: como os elementos filhos escolhem o lado onde desejam encaixar? A resposta é por meio de uma propriedade anexada chamada Dock, que pode ser definida como Left, Right, Top ou Bottom. Cada elemento que é colocado dentro de um DockPanel adquire automaticamente esta propriedade. 
+Aqui está um exemplo que coloca um botão em cada lado de um DockPanel:
+</p>
