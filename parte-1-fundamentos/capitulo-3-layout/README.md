@@ -206,3 +206,35 @@ como você fez com o StackPanel. Aqui está uma versão modificada do exemplo an
  ```
 
  ![SimpleDockPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/18.png)
+ 
+ ### Layout containers e seus alinhamentos
+ 
+O StackPanel, WrapPanel e DockPanel raramente são usados por conta própria. Em vez disso, eles são usados para moldar partes de sua interface. Por exemplo, você pode usar um DockPanel para colocar diferentes StackPanel e Contêineres WrapPanel nas regiões apropriadas de uma janela.
+Por exemplo, imagine que você deseja criar uma caixa de diálogo padrão com um botão OK e Cancelar no canto inferior direito e uma grande região de conteúdo no resto da janela. Você pode modelar esta interface com WPF de várias maneiras, mas a opção mais fácil que usa os painéis que você viu até agora é a seguinte:
+
+```
+<DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Margin="10,10,2,10" Padding="3">OK</Button>
+            <Button Margin="2,10,10,10" Padding="3">Cancelar</Button>
+        </StackPanel>
+        <TextBox DockPanel.Dock="Top" Margin="10">Isto é um teste.</TextBox>
+ </DockPanel>
+```
+
+Percebam que o **TextBox** vai por último justamente para ocupar todo o espaço restante como demonstrado nos exemplos anteriores.
+
+![BasicDialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/19.png)
+
+## O Grid
+
+<p>
+O Grid é o contêiner de layout mais poderoso do WPF. Muito do que você pode realizar com o outro controles de layout também são possíveis com a grade. A grade também é uma ferramenta ideal para esculpir sua janela em regiões menores que você pode gerenciar com outros painéis. Na verdade, a grade é tão útil que quando você adiciona um
+novo documento XAML para uma janela no Visual Studio, ele adiciona automaticamente as tags Grid como o primeiro nível container, alinhado dentro do elemento Window raiz.
+</p>
+
+<p>
+A grade separa os elementos em uma grade invisível de linhas e colunas embora mais de uma elemento pode ser colocado em uma única célula (nesse caso, eles se sobrepõem), geralmente faz sentido colocar apenas um único elemento por célula. Claro, esse elemento pode ser outro contêiner(DockPanel, WrapPanel e StackPanel) de layout que organiza seu próprio grupo de controles contidos.
+</p>
+
+**Dica** : Embora o Grid seja projetado para ser invisível, você pode definir a propriedade **Grid.ShowGridLines** como true para obter um olhar mais de perto. Este recurso não se destina realmente a embelezar uma janela. Em vez disso, é uma conveniência de depuração que é projetado para ajudá-lo a entender como a grade se subdividiu em regiões menores. Este recurso é importante porque você tem a capacidade de controlar exatamente como a grade escolhe as larguras das colunas e as alturas das linhas.
