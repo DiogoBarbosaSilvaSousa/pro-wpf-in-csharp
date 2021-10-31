@@ -152,3 +152,16 @@ esticada para caber no contêiner, mas sua largura é livre para crescer conform
 A pergunta óbvia é: como os elementos filhos escolhem o lado onde desejam encaixar? A resposta é por meio de uma propriedade anexada chamada Dock, que pode ser definida como Left, Right, Top ou Bottom. Cada elemento que é colocado dentro de um DockPanel adquire automaticamente esta propriedade. 
 Aqui está um exemplo que coloca um botão em cada lado de um DockPanel:
 </p>
+
+Este exemplo também define LastChildFill como true, o que diz ao DockPanel para fornecer o espaço restante para o último elemento.
+```
+<DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Top">Botão superior</Button>
+        <Button DockPanel.Dock="Bottom">Botão inferior</Button>
+        <Button DockPanel.Dock="Left">Botão esquerda</Button>
+        <Button DockPanel.Dock="Right">Botão direito</Button>
+        <Button>Espaço restante</Button>
+    </DockPanel>
+```
+
+![SimpleDockPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/16.png)
