@@ -190,3 +190,19 @@ lados inteiros, e os botões superior e inferior se tornariam mais estreitos por
 Você pode encaixar vários elementos no mesmo lado. Neste caso, os elementos simplesmente empilham contra o lado na ordem em que são declarados em sua marcação. E se você não gosta do espaçamento ou do comportamento de alongamento, você pode ajustar as propriedades Margin, HorizontalAlignment e VerticalAlignment, apenas
 como você fez com o StackPanel. Aqui está uma versão modificada do exemplo anterior que ajusta o alinhamento:
  </p>
+ 
+ ```
+ <DockPanel LastChildFill="True">
+        <Button DockPanel.Dock="Top">Um botão superior esticado</Button>
+        <Button DockPanel.Dock="Top" HorizontalAlignment="Center">
+            Um botão superior centralizado</Button>
+        <Button DockPanel.Dock="Top" HorizontalAlignment="Left">
+            Um botão superior alinhado à esquerda</Button>
+        <Button DockPanel.Dock="Bottom">Botão inferior</Button>
+        <Button DockPanel.Dock="Left"> Botão esquerdo</Button>
+        <Button DockPanel.Dock="Right">Botão direito</Button>
+        <Button>Espaço restante</Button>
+    </DockPanel>
+ ```
+
+ ![SimpleDockPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/18.png)
