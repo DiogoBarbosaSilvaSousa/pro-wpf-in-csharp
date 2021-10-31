@@ -359,7 +359,7 @@ Imagine que você tem um Grid de duas colunas e 200 pixels para trabalhar(dividi
 Na maior parte dos casos isso pode não ser um problema mas se você tiver algum elemento, figura ou borda justamente próximo deste canto específico o conteúdo pode parecer borrado porque o WPF usa anti-aliasing para "mesclar".
 </p>
 
-Se esse problema afetar seu layout, há uma solução fácil. Basta definir a propriedade UseLayoutRounding como true em seu contêiner de layout:
+Se esse problema afetar seu layout, há uma solução fácil. Basta definir a propriedade ***UseLayoutRounding*** como true em seu contêiner de layout:
 
 ```
 <Grid UseLayoutRounding = "True">
