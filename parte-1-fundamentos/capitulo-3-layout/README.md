@@ -295,3 +295,31 @@ Depois de entender como funciona o Grid, você pode corrigir esses problemas. O 
  - ***Tamanhos automáticos*** : cada linha ou coluna recebe exatamente a quantidade de espaço que possui de acordo com suas necessidades, e nada mais. Este é um dos modos de dimensionamento mais úteis.
  
  - ***Tamanhos proporcionais*** : o espaço é dividido entre um grupo de linhas ou colunas. Isto é a configuração padrão para todas as linhas e colunas. Por exemplo veja que todas as células aumentam de tamanho proporcionalmente à medida que a grade se expande em uma janela. 
+
+
+Para obter o máximo de flexibilidade, você pode misturar e combinar esses modos de dimensionamento. Por exemplo, muitas vezes é útil criar várias linhas de tamanho automático e deixar uma ou duas linhas restantes obter o espaço restante através do dimensionamento proporcional.
+Você define o modo de dimensionamento usando a propriedade Width do objeto ColumnDefinition ou a propriedade Height do objeto RowDefinition. Por exemplo, aqui está como você define uma largura absoluta de 100 unidades independentes do dispositivo:
+
+```
+<ColumnDefinition Width = "100"> </ColumnDefinition>
+```
+
+Para usar o dimensionamento automático, você usa um valor de Auto:
+
+```
+<ColumnDefinition Width = "Auto"> </ColumnDefinition>
+```
+
+Finalmente, para usar o dimensionamento proporcional, você usa um asterisco (*):
+
+```
+<ColumnDefinition Width = "*"> </ColumnDefinition>
+```
+
+Se você usar uma combinação de dimensionamento proporcional e outros modos de dimensionamento, as linhas de tamanho proporcional ou colunas obtêm todo o espaço que sobra.
+Se você quiser dividir o espaço restante de forma desigual, você pode atribuir um peso que você deve colocar antes do asterisco. Por exemplo, se você tiver duas linhas de tamanho proporcional e quiser que a primeira seja metade da altura da segunda, você poderia compartilhar o espaço restante assim:
+```
+<RowDefinition Height = "*"> </RowDefinition>
+<RowDefinition Height = "2 *"> </RowDefinition>
+```
+Isso informa ao Grid que a altura da segunda linha deve ser duas vezes a altura da primeira linha. Você pode usar os números que desejar para distribuir o espaço extra.
