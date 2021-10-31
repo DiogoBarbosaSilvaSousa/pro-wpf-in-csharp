@@ -368,4 +368,40 @@ Se esse problema afetar seu layout, há uma solução fácil. Basta definir a pr
 Agora o WPF irá garantir que todo o conteúdo nesse recipiente(container) do layout seja ajustado ao pixel mais próximo do limite, removendo qualquer borrão.
 
 
+### Spanning Rows and Columns (Abrangendo ou "mesclando" mais de uma coluna ou linha)
 
+Você já viu como colocar elementos em células usando as propriedades anexadas de Linha e Coluna. Vocês também podem usar mais duas propriedades anexadas para fazer um elemento se estender por várias células: RowSpan e ColumnSpan. Essas propriedades pegam o número de linhas ou colunas que o elemento deve ocupar. 
+
+Por exemplo, este botão ocupará todo o espaço disponível na primeira e na segunda célula do primeira e segunda linha na fileira da primeira coluna:
+
+´´´
+<Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">Botão Span</Button>
+´´´
+
+E este botão se estenderá por quatro células no total, abrangendo duas colunas e duas linhas:
+
+```
+<Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">Botão Span</Button>
+```
+
+A mesclagem de linha e coluna pode alcançar alguns efeitos interessantes e é particularmente útil quando você precisa encaixar elementos em uma estrutura tabular que é dividida por divisórias ou seções mais longas de conteúdo.
+Usando a mesclagem de coluna, você pode reescrever o exemplo da caixa de diálogo simples da usando apenas uma única grade. Esta grade divide a janela em três colunas, espalha a caixa de texto por todas as três, e usa as duas últimas colunas para alinhar os botões OK e Cancelar.
+
+```
+<Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Margin="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            Isto é um teste.
+        </TextBox>
+        <Button Margin="10,10,2,10" Padding="3" Grid.Row="1" Grid.Column="1">OK</Button>
+        <Button Margin="2,10,10,10" Padding="3" Grid.Row="1" Grid.Column="2">Cancelar</Button>
+</Grid>
+```
