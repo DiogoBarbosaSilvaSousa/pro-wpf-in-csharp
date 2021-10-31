@@ -343,3 +343,5 @@ Isso informa ao Grid que a altura da segunda linha deve ser duas vezes a altura 
 ![DialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/21.png)
 
 Essa marcação é um pouco mais longa, mas tem a vantagem de declarar os controles na ordem em que devem aparecer, o que torna mais fácil de entender. Neste caso, a abordagem que você adota é simplesmente uma questão de preferência. E se quiser, você pode substituir o StackPanel por uma Grid de uma linha e duas colunas.
+
+***Nota*** : Você pode criar quase qualquer interface usando contêineres Grid aninhados (Um Grid dentro do outro). (Uma exceção são linhas quebradas ou colunas que usam o WrapPanel.) No entanto, quando você está lidando com pequenas seções da interface do usuário ou criando um pequeno número de elementos, muitas vezes é mais simples usar os contêineres StackPanel e DockPanel mais especializados e simples de usar.
