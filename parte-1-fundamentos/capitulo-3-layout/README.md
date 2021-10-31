@@ -323,3 +323,18 @@ Se você quiser dividir o espaço restante de forma desigual, você pode atribui
 <RowDefinition Height = "2 *"> </RowDefinition>
 ```
 Isso informa ao Grid que a altura da segunda linha deve ser duas vezes a altura da primeira linha. Você pode usar os números que desejar para distribuir o espaço extra.
+
+```
+<Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Margin="10" Grid.Row="0">Isto é um teste.</TextBox>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Margin="10,10,2,10" Padding="3">OK</Button>
+            <Button Margin="2,10,10,10" Padding="3">Cancelar</Button>
+        </StackPanel>
+</Grid>
+```
+![DialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/21.png)
