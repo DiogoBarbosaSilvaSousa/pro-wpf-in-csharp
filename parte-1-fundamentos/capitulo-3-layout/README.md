@@ -285,3 +285,13 @@ Os problemas pioram quando você adiciona vários elementos, porque O Visual Stu
  <p>
 Depois de entender como funciona o Grid, você pode corrigir esses problemas. O primeiro truque é configurar sua Grade antes de começar a adicionar elementos, definindo suas linhas e colunas. (Você pode editar o RowDefinitions e coleções ColumnDefinitions usando a janela Propriedades.) Depois de configurar o Grid, você pode arrastar e soltar os elementos que você deseja na grade e definir suas configurações de margem e alinhamento na janela de propriedades ou editando o XAML manualmente.
  </p>
+ 
+ ### Ajuste finos de linhas e colunas
+ 
+ O Grid oferece suporte a três estratégias de dimensionamento:
+ 
+ - ***Tamanhos absolutos*** : você escolhe o tamanho exato usando unidades independentes de dispositivo. Essa é a estratégia menos útil porque não é flexível o suficiente para lidar com mudanças de tamanho do conteúdo, alteração do tamanho do contêiner ou localização.
+ 
+ - ***Tamanhos automáticos*** : cada linha ou coluna recebe exatamente a quantidade de espaço que possui de acordo com suas necessidades, e nada mais. Este é um dos modos de dimensionamento mais úteis.
+ 
+ - ***Tamanhos proporcionais*** : o espaço é dividido entre um grupo de linhas ou colunas. Isto é a configuração padrão para todas as linhas e colunas. Por exemplo veja que todas as células aumentam de tamanho proporcionalmente à medida que a grade se expande em uma janela. 
