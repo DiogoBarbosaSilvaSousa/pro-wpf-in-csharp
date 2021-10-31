@@ -337,4 +337,7 @@ Isso informa ao Grid que a altura da segunda linha deve ser duas vezes a altura 
         </StackPanel>
 </Grid>
 ```
+
+***Dica*** : Esta grade não declara nenhuma coluna. Este é um atalho que você pode usar se sua grade usar apenas uma coluna e essa coluna é dimensionada proporcionalmente (portanto, preenche toda a largura da grade).
+
 ![DialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/21.png)
