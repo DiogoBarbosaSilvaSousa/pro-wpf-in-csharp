@@ -206,3 +206,18 @@ como você fez com o StackPanel. Aqui está uma versão modificada do exemplo an
  ```
 
  ![SimpleDockPanel](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/18.png)
+ 
+ ### Layout containers e seus alinhamentos
+ 
+O StackPanel, WrapPanel e DockPanel raramente são usados por conta própria. Em vez disso, eles são usados para moldar partes de sua interface. Por exemplo, você pode usar um DockPanel para colocar diferentes StackPanel e Contêineres WrapPanel nas regiões apropriadas de uma janela.
+Por exemplo, imagine que você deseja criar uma caixa de diálogo padrão com um botão OK e Cancelar no canto inferior direito e uma grande região de conteúdo no resto da janela. Você pode modelar esta interface com WPF de várias maneiras, mas a opção mais fácil que usa os painéis que você viu até agora é a seguinte:
+
+```
+<DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Margin="10,10,2,10" Padding="3">OK</Button>
+            <Button Margin="2,10,10,10" Padding="3">Cancelar</Button>
+        </StackPanel>
+        <TextBox DockPanel.Dock="Top" Margin="10">Isto é um teste.</TextBox>
+    </DockPanel>
+```
