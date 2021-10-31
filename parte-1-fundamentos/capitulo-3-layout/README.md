@@ -219,5 +219,6 @@ Por exemplo, imagine que você deseja criar uma caixa de diálogo padrão com um
             <Button Margin="2,10,10,10" Padding="3">Cancelar</Button>
         </StackPanel>
         <TextBox DockPanel.Dock="Top" Margin="10">Isto é um teste.</TextBox>
-    </DockPanel>
+ </DockPanel>
 ```
+![BasicDialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/19.png)
