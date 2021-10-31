@@ -262,3 +262,21 @@ A grade separa os elementos em uma grade invisível de linhas e colunas embora m
 
 
 **Nota** : A grade ajusta elementos em linhas e colunas predefinidas. Isso é diferente de contêineres de layout, como o WrapPanel e o StackPanel que criam linhas ou colunas implícitas à medida que organizam seus filhos. Se você quiser criar uma grade que tenha mais de uma linha e uma coluna, você deve definir suas linhas e colunas explicitamente usando objetos RowDefinition e ColumnDefinition.
+
+### Usando o GRID no Visual Studio
+
+<p>
+Quando você usa uma grade na superfície de design do Visual Studio, você descobrirá que ela funciona de maneira um pouco diferente das outras recipientes de layout. À medida que você arrasta um elemento para uma grade, o Visual Studio permite que você o coloque em um local preciso posição. 
+O Visual Studio faz essa mágica definindo a propriedade Margin do seu elemento.
+Ao definir as margens, o Visual Studio usa o canto mais próximo. Por exemplo, se o seu elemento estiver mais próximo do canto superior esquerdo da grade, o Visual Studio preenche as margens superior e esquerda para posicionar o elemento (e deixa o margens direita e inferior em 0). Se você arrastar seu elemento para baixo mais perto do canto inferior esquerdo, o Visual Studio define as margens inferior e esquerda em vez disso e define a propriedade VerticalAlignment como Bottom. Isso obviamente
+afeta como o elemento se moverá quando a grade for redimensionada.
+ </p>
+ 
+ <p>
+O processo de definição de margem do Visual Studio parece bastante direto, mas na maioria das vezes ele não cria os resultados que você deseja. Normalmente, você desejará um layout de fluxo mais flexível que permita que alguns elementos se expandam dinamicamente e empurre os outros para fora do caminho. Neste cenário, você descobrirá que codificar uma posição com o A propriedade da margem é extremamente inflexível. Os problemas pioram quando você adiciona vários elementos, porque O Visual Studio não adiciona novas células automaticamente. Como resultado, todos os elementos serão colocados na mesma célula.
+Diferentes elementos podem ser alinhados a diferentes cantos da grade, o que fará com que eles se movam com respeito um ao outro (e até mesmo se sobrepõem) conforme a janela é redimensionada.
+ </p>
+ 
+ <p>
+Depois de entender como funciona o Grid, você pode corrigir esses problemas. O primeiro truque é configurar seu Grade antes de começar a adicionar elementos, definindo suas linhas e colunas. (Você pode editar o RowDefinitions e coleções ColumnDefinitions usando a janela Propriedades.) Depois de configurar o Grid, você pode arrastar e solte os elementos que você deseja na grade e defina suas configurações de margem e alinhamento na janela de propriedades ou editando o XAML manualmente.
+ </p>
