@@ -450,6 +450,39 @@ No WPF, as barras divisórias são representadas pela classe GridSplitter e são
 ![SplitWindow](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/23.png)
 
 ```
+   <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <!-- Nesta linha ficará um GridSplitter por isso uso o tamanho Auto pois quero uma altura mínima -->
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100"></ColumnDefinition>
+            <!-- Nesta coluna ficará um GridSplitter por isso uso o tamanho Auto pois quero uma largura mínima -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition MinWidth="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="0" Grid.Column="2" Margin="3">Direita</Button>
+        <Button Grid.Row="2" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="2" Grid.Column="2" Margin="3">Direita</Button>
+
+        <!-- Esse divisor fica na coluna do centro (segunda coluna) ocupando o espaço de três linhas -->
+        <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"  Width="3" VerticalAlignment="Stretch" 
+                      HorizontalAlignment="Center" ShowsPreview="False"></GridSplitter>
+        
+        <!-- Esse divisor fica na linha do meio (segunda linha) ocupando o espaço de três colunas -->
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Center" ShowsPreview="False"></GridSplitter>
+    </Grid>
+```
+
+![SplitWindow](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/25.png)
+
+Criar esta janela é bastante simples, embora seja uma tarefa de manter o controle dos três Grid (contêineres) que estão envolvidos: a grade geral, a grade alinhada à esquerda e a grade alinhada à direita. O único truque é garantir que o GridSplitter seja colocado na célula correta e tenha o alinhamento correto. Aqui está a marcação completa:
+
+```
 <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -490,33 +523,6 @@ No WPF, as barras divisórias são representadas pela classe GridSplitter e são
 
 ![DoubleSplitWindow](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/24.png)
 
-```
-   <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <!-- Nesta linha ficará um GridSplitter por isso uso o tamanho Auto pois quero uma altura mínima -->
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="100"></ColumnDefinition>
-            <!-- Nesta coluna ficará um GridSplitter por isso uso o tamanho Auto pois quero uma largura mínima -->
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition MinWidth="50"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" Grid.Column="0" Margin="3">Esquerda</Button>
-        <Button Grid.Row="0" Grid.Column="2" Margin="3">Direita</Button>
-        <Button Grid.Row="2" Grid.Column="0" Margin="3">Esquerda</Button>
-        <Button Grid.Row="2" Grid.Column="2" Margin="3">Direita</Button>
+***Dica*** : Lembre-se, se uma grade tiver apenas uma única linha ou coluna, você pode deixar de fora a seção RowDefinitions. Elementos que não têm sua posição de linha explicitamente definida são considerados como tendo um valor Grid.Row de 0 e são colocados na primeira linha. O mesmo vale para elementos que não fornecem um valor Grid.Column.
 
-        <!-- Esse divisor fica na coluna do centro (segunda coluna) ocupando o espaço de três linhas -->
-        <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"  Width="3" VerticalAlignment="Stretch" 
-                      HorizontalAlignment="Center" ShowsPreview="False"></GridSplitter>
-        
-        <!-- Esse divisor fica na linha do meio (segunda linha) ocupando o espaço de três colunas -->
-        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" 
-                      VerticalAlignment="Center" ShowsPreview="False"></GridSplitter>
-    </Grid>
-```
 
-![SplitWindow](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/25.png)
