@@ -405,3 +405,5 @@ Usando a mesclagem de coluna, você pode reescrever o exemplo da caixa de diálo
         <Button Margin="2,10,10,10" Padding="3" Grid.Row="1" Grid.Column="2">Cancelar</Button>
 </Grid>
 ```
+
+![DialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/22.png)
