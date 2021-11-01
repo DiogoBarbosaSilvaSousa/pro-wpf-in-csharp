@@ -407,3 +407,6 @@ Usando a mesclagem de coluna, você pode reescrever o exemplo da caixa de diálo
 ```
 
 ![DialogBox](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/22.png)
+
+***Observação***
+> Caso ainda não tenham percebido a primeira coluna ou linha começa a partir do número 0 o número 1 seria a segunda linha ou coluna a contagem de linhas e colunas segue o mesmo padrão de contagem usado em um Array (vetor) que começam a partir do Zero (0) e não do número 1 (um) como estamos acostumados a contar no dia a dia.  
