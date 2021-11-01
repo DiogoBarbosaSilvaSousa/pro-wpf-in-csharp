@@ -570,7 +570,7 @@ Imagine que você tem dois ou mais grupos de Grid em seu painel, normamelnte o c
 
 ## O UniformGrid
 
-O UniformGrid é usado com muito menos frequência do que o Grid. O Grid é uma ferramenta multifuncional para criar layouts de janela do simples ao complexo. O UniformGrid é um layout muito mais especializado que é principalmente útil ao dispor rapidamente os elementos em uma grade rígida (por exemplo, quando construir um tabuleiro de jogo para certos jogos). Muitos programadores de WPF nunca usarão o UniformGrid. (Na verdade você nem mesmo acha na versão do Visual Studio 2019 o UniformGrid na ToolBox junto com os outros componentes, literalmente você precisa digitar se quiser usar.)
+O UniformGrid é usado com muito menos frequência do que o Grid. O Grid é uma ferramenta multifuncional para criar layouts de janela do simples ao complexo. O UniformGrid é um layout muito mais especializado que é principalmente útil ao dispor rapidamente os elementos em uma grade rígida (por exemplo, quando construir um tabuleiro de jogo para certos jogos). Muitos programadores de WPF nunca usarão o UniformGrid. (Na verdade eu nem mesmo achei na versão do Visual Studio 2019 o UniformGrid na ToolBox junto com os outros componentes, literalmente você precisa digitar se quiser usar.)
 
 ```
 <UniformGrid Rows="2" Columns="2">
