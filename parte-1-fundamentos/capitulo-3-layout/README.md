@@ -529,7 +529,7 @@ Criar esta janela é bastante simples, embora seja uma tarefa de manter o contro
 
 Imagine que você tem dois ou mais grupos de Grid em seu painel, normamelnte o comportamento deles é independente um do outro mas imagine que você tenha um conteúdo numa determinada linha ou coluna em um dos Grids e quer que uma linha ou coluna num outro Grid se comporte tendo o mesmo tamanho como fazer esse redimensionamento ? Neste caso usamos a propriedade ***SharedSizeGroup*** e atribuímos um nome para ela no exemplo abaixo eu atribui a propriedade a duas colunas (SharedSizeGroup="TextLabel") que agora trabalham como se fosse uma respeitando aquela que possui maior conteúdo. Lembrando que pelo menos uma das linhas ou colunas precisam está como Width="Auto" ou Height="Auto" preferencialmente as duas colunas ou linhas deven ser definidas como "Auto". 
 
-***Caso não tenha ficado claro o motivo de pelo menos um deles ter que está com o tamanho definido como Auto é que se tornaria inútil usar essa propriedade ***SharedSizeGroup*** se os valores forem absolutos uma vez que o objetivo é redimensionar o tamanho dinamicamente.*** 
+***Caso não tenha ficado claro o motivo de pelo menos um deles ter que está com o tamanho definido como Auto é que se tornaria inútil usar essa propriedade ***SharedSizeGroup*** se os valores forem absolutos, uma vez que o objetivo é redimensionar o tamanho dinamicamente.*** 
 
 ```
     <Grid Grid.IsSharedSizeScope="True" Margin="3">
@@ -564,3 +564,6 @@ Imagine que você tem dois ou mais grupos de Grid em seu painel, normamelnte o c
     </Grid>
 ```
 
+![SharedSizeGroup](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/26.png)
+
+**Dica** : Você pode usar um grupo de tamanho compartilhado para sincronizar uma grade separada com cabeçalhos (colunas). A largura de cada coluna pode então ser determinada pelo conteúdo da coluna que o cabeçalho irá compartilhar. Você pode até colocar um GridSplitter no cabeçalho para que o usuário possa redimensionar o cabeçalho e toda a coluna abaixo simplestemente arrastando para os lados.
