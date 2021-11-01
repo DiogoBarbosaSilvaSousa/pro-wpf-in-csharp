@@ -417,3 +417,106 @@ Usando a mesclagem de coluna, você pode reescrever o exemplo da caixa de diálo
 >Quando você escolhe os contêineres de layout para uma janela, você não está simplesmente interessado em obter o comportamento de layout correto - você também deseja construir uma estrutura de layout que seja fácil de manter e melhorar no futuro. Uma boa regra é usar contêineres de layout menores, como o StackPanel para tarefas de layout únicas, como organizar um grupo de botões. Por outro lado, se você precisar aplicar um estrutura consistente para mais de uma área de sua janela (como com a coluna da caixa de texto mostrada mais adiante, o Grid é uma ferramenta indispensável para padronizar seu layout). 
 
 >Logo o ideal é sempre uma combinação inteligente dos containêres disponíveis Grid, DockerPanel e StackPanel para facilitar a manutenção do seu layout. Lembrando que não é obrigatório usar os três ao mesmo tempo mas é interessante que cada um deles resolve um determinado problema de uma forma diferente que pode facilitar e muito na diagramação da sua aplicação WPF.
+
+### Splitting Windows (Divisão de Janelas)
+
+Cada usuário do Windows viu já barras divisórias - divisórias arrastáveis que separam uma seção de uma janela da outra. Por exemplo, quando você usa o Windows Explorer, é apresentada uma lista de pastas (à esquerda) e uma lista de arquivos (à direita). Você pode arrastar a barra divisora para determinar a proporção da janela fornecida para cada painel.
+
+No WPF, as barras divisórias são representadas pela classe GridSplitter e são um recurso do Grid. Adicionando um GridSplitter para uma grade, você dá ao usuário a capacidade de redimensionar linhas ou colunas. Ao arrastar a barra divisora, o usuário pode alterar as larguras de ambas as colunas.
+
+```
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100"></ColumnDefinition>
+            <!-- Nesta coluna ficará um GridSplitter por isso uso o tamanho Auto pois quero uma largura mínima -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition MinWidth="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="0" Grid.Column="2" Margin="3">Direita</Button>
+        <Button Grid.Row="2" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="2" Grid.Column="2" Margin="3">Direita</Button>
+
+        <!-- Esse divisor fica na coluna do centro (segunda coluna) ocupando o espaço de três linhas -->
+        <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"  Width="3" VerticalAlignment="Stretch" 
+                      HorizontalAlignment="Center" ShowsPreview="False"></GridSplitter>
+    </Grid>
+```
+
+![SplitWindow](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/23.png)
+
+```
+<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <!-- Nesta coluna ficará um GridSplitter por isso uso o tamanho Auto pois quero uma largura mínima -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <!-- (Primeira coluna "0" )Esta é a grade alinhada à esquerda. Não é subdividida com um divisor. -->
+        <Grid Grid.Column="0" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Margin="3" Grid.Row="0">Superior Esquerdo</Button>
+            <Button Margin="3" Grid.Row="1">Infeior Esquerdo</Button>
+        </Grid>
+        
+        <!-- (Segunda coluna "1") Este é o divisor vertical que fica entre as duas grades alinhadas (esquerda e direita). -->
+        <GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"  ShowsPreview="False"></GridSplitter>
+       
+        <!-- (Terceira coluna "2") Esta é a grade alinhada à direita. -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <!-- Nesta linha ficará um GridSplitter por isso uso o tamanho Auto pois quero uma altura mínima -->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Margin="3">Superior Direito</Button>
+            <Button Grid.Row="2" Margin="3">Inferior Direito</Button>
+            
+            <!-- Este é o divisor horizontal que o subdivide em uma região superior e inferior no lado direito. -->
+            <GridSplitter Grid.Row="1" Height="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" ShowsPreview="False"></GridSplitter>
+        </Grid>
+ </Grid>
+```
+
+![DoubleSplitWindow](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/24.png)
+
+```
+   <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <!-- Nesta linha ficará um GridSplitter por isso uso o tamanho Auto pois quero uma altura mínima -->
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100"></ColumnDefinition>
+            <!-- Nesta coluna ficará um GridSplitter por isso uso o tamanho Auto pois quero uma largura mínima -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition MinWidth="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="0" Grid.Column="2" Margin="3">Direita</Button>
+        <Button Grid.Row="2" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="2" Grid.Column="2" Margin="3">Direita</Button>
+
+        <!-- Esse divisor fica na coluna do centro (segunda coluna) ocupando o espaço de três linhas -->
+        <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"  Width="3" VerticalAlignment="Stretch" 
+                      HorizontalAlignment="Center" ShowsPreview="False"></GridSplitter>
+        
+        <!-- Esse divisor fica na linha do meio (segunda linha) ocupando o espaço de três colunas -->
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Center" ShowsPreview="False"></GridSplitter>
+    </Grid>
+```
+
+![SplitWindow](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/25.png)
