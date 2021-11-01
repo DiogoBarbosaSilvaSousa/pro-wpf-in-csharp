@@ -567,3 +567,17 @@ Imagine que você tem dois ou mais grupos de Grid em seu painel, normamelnte o c
 ![SharedSizeGroup](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/26.png)
 
 **Dica** : Você pode usar um grupo de tamanho compartilhado para sincronizar uma grade separada com cabeçalhos (colunas). A largura de cada coluna pode então ser determinada pelo conteúdo da coluna que o cabeçalho irá compartilhar. Você pode até colocar um GridSplitter no cabeçalho para que o usuário possa redimensionar o cabeçalho e toda a coluna abaixo simplestemente arrastando para os lados.
+
+## O UniformGrid
+
+O UniformGrid é usado com muito menos frequência do que o Grid. O Grid é uma ferramenta multifuncional para criar layouts de janela do simples ao complexo. O UniformGrid é um layout muito mais especializado que é principalmente útil ao dispor rapidamente os elementos em uma grade rígida (por exemplo, quando construir um tabuleiro de jogo para certos jogos). Muitos programadores de WPF nunca usarão o UniformGrid. (Na verdade você nem mesmo acha na versão od Visual Studio 2019 o UniformGrid na ToolBox junto com os outros componentes, literalmente você precisa digitar se quiser usar.)
+
+```
+<UniformGrid Rows="2" Columns="2">
+        <Button>Esquerda Superior</Button>
+        <Button>Direita Superior</Button>
+        <Button>Esquerda Inferior</Button>
+        <Button>Direita Inferior</Button>
+</UniformGrid>
+```
+![SimpleUniformGrid](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/27.png)
