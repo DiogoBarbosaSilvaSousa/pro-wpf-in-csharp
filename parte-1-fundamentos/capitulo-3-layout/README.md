@@ -525,4 +525,42 @@ Criar esta janela é bastante simples, embora seja uma tarefa de manter o contro
 
 ***Dica*** : Lembre-se, se uma grade tiver apenas uma única linha ou coluna, você pode deixar de fora a seção RowDefinitions. Elementos que não têm sua posição de linha explicitamente definida são considerados como tendo um valor Grid.Row de 0 e são colocados na primeira linha. O mesmo vale para elementos que não fornecem um valor Grid.Column.
 
+### Grupos de tamanhos compartilhados (Shared Size Groups)
+
+Imagine que você tem dois ou mais grupos de Grid em seu painel, normamelnte o comportamento deles é independente um do outro mas imagine que você tenha um conteúdo numa determinada linha ou coluna em um dos Grids e quer que uma linha ou coluna num outro Grid se comporte tendo o mesmo tamanho como fazer esse redimensionamento ? Neste caso usamos a propriedade ***SharedSizeGroup*** e atribuímos um nome para ela no exemplo abaixo eu atribui a propriedade a duas colunas (SharedSizeGroup="TextLabel") que agora trabalham como se fosse uma respeitando aquela que possui maior conteúdo. Lembrando que pelo menos uma das linhas ou colunas precisam está como Width="Auto" ou Height="Auto" preferencialmente as duas colunas ou linhas deven ser definidas como "Auto". 
+
+***Caso não tenha ficado claro o motivo de pelo menos um deles ter que está com o tamanho definido como Auto é que se tornaria inútil usar essa propriedade ***SharedSizeGroup*** se os valores forem absolutos uma vez que o objetivo é redimensionar o tamanho dinamicamente.*** 
+
+```
+    <Grid Grid.IsSharedSizeScope="True" Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="3" Background="LightYellow" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="TextLabel"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Margin="5">Um texto muito longo</Label>
+            <Label Grid.Column="1" Margin="5">Mais texto</Label>
+            <TextBox Grid.Column="2" Margin="5">Uma caixa de texto</TextBox>
+        </Grid>
+
+        <Label Grid.Row="1" >Algum texto entre as duas grades ...</Label>
+
+        <Grid Grid.Row="2" Margin="3" Background="LightYellow" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="TextLabel"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Margin="5">Curto</Label>
+            <TextBox Grid.Column="1" Margin="5">Uma caixa de texto</TextBox>
+        </Grid>
+
+    </Grid>
+```
 
