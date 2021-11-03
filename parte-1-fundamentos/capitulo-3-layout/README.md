@@ -581,3 +581,18 @@ O UniformGrid é usado com muito menos frequência do que o Grid. O Grid é uma 
 </UniformGrid>
 ```
 ![SimpleUniformGrid](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/27.png)
+
+## Layout baseado em coordenadas na tela (Canvas)
+
+O único contêiner de layout quê ainda não consideramos é o Canvas. Ele permite que você coloque elementos usando coordenadas exatas, que é uma escolha ruim para projetar formulários baseados em dados ricos e caixas de diálogo padrão, mas uma ferramenta valiosa se você precisar construir algo um pouco diferente (como uma superfície de desenho para uma ferramenta de diagramação). 
+
+O Canvas também é o mais leve dos contêineres de layout. Isso é porque não inclui nenhuma lógica de layout complexa para negociar as preferências de tamanho de seus filhos. Em vez disso simplesmente os coloca na posição que especificam, com o tamanho exato que desejam. Para posicionar um elemento no Canvas você define as propriedades Canvas.Left e Canvas.Top anexadas. Canvas.Left define o número de unidades entre a borda esquerda do seu elemento e a borda esquerda do Canvas. Canvas.Top define o número de unidades entre o topo do seu elemento e o topo do Canvas. Como sempre, esses valores são definidos em unidades independentes de dispositivo, que se alinham com pixels comuns exatamente quando
+o DPI do sistema é definido como 96 dpi.
+
+Como alternativa, você pode usar Canvas.Right em vez de Canvas.Left para espaçar um elemento da borda direita do Canvas e o Canvas.Bottom em vez de Canvas.Top para espaçá-lo a partir da parte inferior. Você simplesmente não pode usar o Canvas.Right e Canvas.Left de uma vez, ou Canvas.Top e Canvas.Bottom.
+
+Opcionalmente, você pode dimensionar seu elemento explicitamente usando suas propriedades Width e Height. Isso é mais comum ao usar o Canvas do que em outros painéis porque o Canvas não tem lógica de layout. (Muitas vezes você usará o Canvas quando precisar de controle preciso sobre como uma combinação de elementos é organizado.) Se você não definir as propriedades Width e Height, seu elemento terá o tamanho desejado - em em outras palavras, ele crescerá apenas o suficiente para caber em seu conteúdo.
+
+Aqui está uma tela simples que inclui quatro botões:
+
+![LayoutPanelsCanvas](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/28.png)
