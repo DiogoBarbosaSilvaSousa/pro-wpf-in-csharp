@@ -610,3 +610,29 @@ Aqui está uma tela simples que inclui quatro botões:
 
 Se você redimensionar a janela o Canvas se estende para preencher o espaço disponível, mas nenhum dos controles na tela se move ou muda de tamanho. O Canvas não inclui nenhum dos recursos de ancoragem ou encaixe que foram fornecidos com o layout de coordenadas no Windows Forms. Parte da razão para essa lacuna é manter o Canvas leve. Outro motivo é evitar que as pessoas usem o Canvas para os fins nos quais ele não é pretendido (como o layout de uma interface de usuário padrão).
 Como qualquer outro contêiner de layout, o Canvas pode ser alinhado dentro de uma interface de usuário. Isso significa que você pode usar o Canvas para desenhar algum conteúdo detalhado em uma parte de sua janela, usando mais padrões de painéis WPF para o resto de seus elementos (Grid, DockPanel e StackPanel).
+
+### Z-Order (Ordenação no eixo Z)
+
+Se você tiver mais de um elemento sobreposto, pode definir a propriedade Canvas.ZIndex anexada para controlar como eles são dispostos em camadas.
+Normalmente, todos os elementos que você adiciona têm o mesmo ZIndex — 0. Quando os elementos têm o mesmo ZIndex, eles são exibidos na mesma ordem em que existem na coleção Canvas.Children, que é baseada na marcação definida no XAML. Elementos declarados posteriormente na marcação, como o botão (70,120) - são exibidos na parte superior dos elementos declarados anteriormente - como o botão (120,30).
+
+No entanto, você pode promover qualquer elemento a um nível superior aumentando seu ZIndex. Isso é porque os elementos ZIndex superiores sempre aparecem sobre os elementos ZIndex inferiores. Usando esta técnica, você poderia inverta a estratificação no exemplo anterior:
+
+
+```
+<Canvas>
+        <Button Canvas.Left="10" Canvas.Top="10">(10,10)</Button>
+        <Button Canvas.Left="120" Canvas.Top="30">(120,30)</Button>
+        <Button Canvas.Left="60" Canvas.Top="80" Canvas.ZIndex="1" Width="50" Height="50">
+         (60,80)</Button>
+        <Button Canvas.Left="70" Canvas.Top="120" Width="100" Height="50">
+         (70,120)</Button>
+</Canvas>
+```
+
+![LayoutPanelsCanvas](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/29.png)
+
+***Nota*** 
+> Os valores que você usa para a propriedade Canvas.ZIndex não têm significado. O detalhe importante é como o O valor ZIndex de um elemento se compara ao valor ZIndex de outro. Você pode definir o ZIndex usando qualquer número inteiro positivo ou negativo.
+
+A propriedade ZIndex é particularmente útil se você precisar alterar a posição de um elemento programaticamente. Basta chamar Canvas.SetZIndex e passar o elemento que você deseja modificar e o novo ZIndex que você deseja aplicar. Infelizmente, não há método BringToFront() ou SendToBack() - depende de você acompanhar os valores ZIndex mais altos e mais baixos se quiser implementar esse comportamento.
