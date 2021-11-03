@@ -636,3 +636,27 @@ No entanto, você pode promover qualquer elemento a um nível superior aumentand
 > Os valores que você usa para a propriedade Canvas.ZIndex não têm significado. O detalhe importante é como o O valor ZIndex de um elemento se compara ao valor ZIndex de outro. Você pode definir o ZIndex usando qualquer número inteiro positivo ou negativo.
 
 A propriedade ZIndex é particularmente útil se você precisar alterar a posição de um elemento programaticamente. Basta chamar Canvas.SetZIndex e passar o elemento que você deseja modificar e o novo ZIndex que você deseja aplicar. Infelizmente, não há método BringToFront() ou SendToBack() - depende de você acompanhar os valores ZIndex mais altos e mais baixos se quiser implementar esse comportamento.
+
+## O InkCanvas
+
+WPF também inclui um elemento InkCanvas que é semelhante ao Canvas em alguns aspectos (e totalmente diferente em outros). Como o Canvas, o InkCanvas define quatro propriedades anexadas às quais você pode aplicar elementos filhos para posicionamento baseado em coordenadas (superior, esquerda, inferior e direita). No entanto o código por trás dele é um pouco diferente - na verdade, o InkCanvas não deriva do Canvas ou mesmo da base classe Panel. Em vez disso, ele deriva diretamente de FrameworkElement.
+
+O objetivo principal do InkCanvas é permitir a entrada da caneta. Uma caneta é um dispositivo de entrada semelhante a uma caneta que é usado em tablets e PCs. No entanto, o InkCanvas funciona com o mouse da mesma forma que funciona com a caneta. Assim um usuário pode desenhar linhas ou selecionar e manipular elementos no InkCanvas usando o mouse.
+O InkCanvas contém duas coleções de conteúdo filho. A coleção Children que é arbitrária elementos, assim como com o Canvas. Cada elemento pode ser posicionado com base na parte superior, esquerda, inferior e Propriedades certas. A coleção Strokes contém objetos System.Windows.Ink.Stroke, que representam entrada gráfica que o usuário desenhou no InkCanvas. Cada linha ou curva que o usuário desenha se torna um objeto Stroke separado. Graças a essas coleções duplas, você pode usar o InkCanvas para permitir que o usuário anote conteúdo (armazenado na coleção Children) com traços (armazenado na coleção Strokes).
+
+```
+ <InkCanvas Name="inkCanvas" Background="LightYellow" EditingMode="Ink">
+            <Image Source="/components/Images/the-fresh-prince-of-bel-air.jpg" 
+                   InkCanvas.Top="60" InkCanvas.Left="20" Width="400" Height="350"/>
+</InkCanvas>
+```
+
+![SimpleInkCanvas](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/30.png)
+
+- ***Ink*** O InkCanvas permite ao usuário fazer anotações. Este é o modo padrão. Quando o o usuário desenha com o mouse ou a caneta, um traço é desenhado.
+- ***GestureOnly*** O InkCanvas não permite que o usuário desenhe anotações de traço, mas presta atenção a gestos predefinidos específicos (como arrastar a caneta em uma direção ou arranhar nosso conteúdo). A lista completa de gestos reconhecidos é listada pelo System.Windows.Ink. Enumeração de ApplicationGesture.
+- ***InkAndGesture*** O InkCanvas permite que o usuário desenhe anotações de traço e também reconhece gestos predefinidos.
+- ***EraseByStroke*** O InkCanvas apaga um traço quando é clicado. Um usuário pode mudar para este modo usando a extremidade posterior de uma caneta. (Você pode determinar o modo atual usando o modo somente leitura Propriedade ActiveEditingMode, e você pode alterar o modo usado para o back-end do stylus alterando a propriedade EditingModeInverted.)
+- ***EraseByPoint*** O InkCanvas apaga uma parte de um traço (um ponto em um traço) quando essa parte éclicado. Selecionar O InkCanvas permite ao usuário selecionar os elementos que são armazenados nos Filhos coleção. Para selecionar um elemento, o usuário deve clicar nele ou arrastar um “laço” de seleção ao redor isto. Depois que um elemento é selecionado, ele pode ser movido, redimensionado ou excluído.
+- ***None*** O InkCanvas ignora a entrada do mouse e da caneta.
+
