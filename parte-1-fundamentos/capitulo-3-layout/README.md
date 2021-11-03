@@ -581,3 +581,32 @@ O UniformGrid é usado com muito menos frequência do que o Grid. O Grid é uma 
 </UniformGrid>
 ```
 ![SimpleUniformGrid](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/27.png)
+
+## Layout baseado em coordenadas na tela (Canvas)
+
+O único contêiner de layout quê ainda não consideramos é o Canvas. Ele permite que você coloque elementos usando coordenadas exatas, que é uma escolha ruim para projetar formulários baseados em dados ricos e caixas de diálogo padrão, mas uma ferramenta valiosa se você precisar construir algo um pouco diferente (como uma superfície de desenho para uma ferramenta de diagramação). 
+
+O Canvas também é o mais leve dos contêineres de layout. Isso é porque não inclui nenhuma lógica de layout complexa para negociar as preferências de tamanho de seus filhos. Em vez disso simplesmente os coloca na posição que especificam, com o tamanho exato que desejam. Para posicionar um elemento no Canvas você define as propriedades Canvas.Left e Canvas.Top anexadas. Canvas.Left define o número de unidades entre a borda esquerda do seu elemento e a borda esquerda do Canvas. Canvas.Top define o número de unidades entre o topo do seu elemento e o topo do Canvas. Como sempre, esses valores são definidos em unidades independentes de dispositivo, que se alinham com pixels comuns exatamente quando
+o DPI do sistema é definido como 96 dpi.
+
+Como alternativa, você pode usar Canvas.Right em vez de Canvas.Left para espaçar um elemento da borda direita do Canvas e o Canvas.Bottom em vez de Canvas.Top para espaçá-lo a partir da parte inferior. Você simplesmente não pode usar o Canvas.Right e Canvas.Left de uma vez, ou Canvas.Top e Canvas.Bottom.
+
+Opcionalmente, você pode dimensionar seu elemento explicitamente usando suas propriedades Width e Height. Isso é mais comum ao usar o Canvas do que em outros painéis porque o Canvas não tem lógica de layout. (Muitas vezes você usará o Canvas quando precisar de controle preciso sobre como uma combinação de elementos é organizado.) Se você não definir as propriedades Width e Height, seu elemento terá o tamanho desejado - em em outras palavras, ele crescerá apenas o suficiente para caber em seu conteúdo.
+
+Aqui está uma tela simples que inclui quatro botões:
+
+```
+<Canvas>
+        <Button Canvas.Left="10" Canvas.Top="10">(10,10)</Button>
+        <Button Canvas.Left="120" Canvas.Top="30">(120,30)</Button>
+        <Button Canvas.Left="60" Canvas.Top="80" Width="50" Height="50">
+            (60,80)</Button>
+        <Button Canvas.Left="70" Canvas.Top="120" Width="100" Height="50">
+            (70,120)</Button>
+</Canvas>
+```
+
+![LayoutPanelsCanvas](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/28.png)
+
+Se você redimensionar a janela o Canvas se estende para preencher o espaço disponível, mas nenhum dos controles na tela se move ou muda de tamanho. O Canvas não inclui nenhum dos recursos de ancoragem ou encaixe que foram fornecidos com o layout de coordenadas no Windows Forms. Parte da razão para essa lacuna é manter o Canvas leve. Outro motivo é evitar que as pessoas usem o Canvas para os fins nos quais ele não é pretendido (como o layout de uma interface de usuário padrão).
+Como qualquer outro contêiner de layout, o Canvas pode ser alinhado dentro de uma interface de usuário. Isso significa que você pode usar o Canvas para desenhar algum conteúdo detalhado em uma parte de sua janela, usando mais padrões de painéis WPF para o resto de seus elementos (Grid, DockPanel e StackPanel).
