@@ -595,4 +595,18 @@ Opcionalmente, você pode dimensionar seu elemento explicitamente usando suas pr
 
 Aqui está uma tela simples que inclui quatro botões:
 
+```
+<Canvas>
+        <Button Canvas.Left="10" Canvas.Top="10">(10,10)</Button>
+        <Button Canvas.Left="120" Canvas.Top="30">(120,30)</Button>
+        <Button Canvas.Left="60" Canvas.Top="80" Width="50" Height="50">
+            (60,80)</Button>
+        <Button Canvas.Left="70" Canvas.Top="120" Width="100" Height="50">
+            (70,120)</Button>
+</Canvas>
+```
+
 ![LayoutPanelsCanvas](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/28.png)
+
+Se você redimensionar a janela o Canvas se estende para preencher o espaço disponível, mas nenhum dos controles na tela se move ou muda de tamanho. O Canvas não inclui nenhum dos recursos de ancoragem ou encaixe que foram fornecidos com o layout de coordenadas no Windows Forms. Parte da razão para essa lacuna é manter o Canvas leve. Outro motivo é evitar que as pessoas usem o Canvas para os fins nos quais ele não é pretendido (como o layout de uma interface de usuário padrão).
+Como qualquer outro contêiner de layout, o Canvas pode ser alinhado dentro de uma interface de usuário. Isso significa que você pode usar o Canvas para desenhar algum conteúdo detalhado em uma parte de sua janela, usando mais padrões de painéis WPF para o resto de seus elementos (Grid, DockPanel e StackPanel).
