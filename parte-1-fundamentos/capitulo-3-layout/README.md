@@ -660,3 +660,107 @@ O InkCanvas contém duas coleções de conteúdo filho. A coleção Children que
 - ***EraseByPoint*** O InkCanvas apaga uma parte de um traço (um ponto em um traço) quando essa parte é clicada. Selecionar O InkCanvas permite ao usuário selecionar os elementos que são armazenados no Filhos Children collection. Para selecionar um elemento, o usuário deve clicar nele ou arrastar um “laço” de seleção ao redor isto. Depois que um elemento é selecionado, ele pode ser movido, redimensionado ou excluído.
 - ***None*** O InkCanvas ignora a entrada do mouse e da caneta.
 
+***Arquivo MainWindow.xaml.cs contendo um código para o ComboBox que uso no próximo exemplo***
+```
+namespace SimpleInkCanvasAdvanced
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            LoadComboBox();
+
+        }
+
+        /// <summary>
+        /// Método para carregar os dados no ComboBox
+        /// </summary>
+        private void LoadComboBox()
+        {
+            inkCanvasComboBox.Items.Add(InkCanvasEditingMode.None.ToString());
+            inkCanvasComboBox.Items.Add(InkCanvasEditingMode.Ink.ToString());
+            inkCanvasComboBox.Items.Add(InkCanvasEditingMode.GestureOnly.ToString());
+            inkCanvasComboBox.Items.Add(InkCanvasEditingMode.InkAndGesture.ToString());
+            inkCanvasComboBox.Items.Add(InkCanvasEditingMode.Select.ToString());
+            inkCanvasComboBox.Items.Add(InkCanvasEditingMode.EraseByPoint.ToString());
+            inkCanvasComboBox.Items.Add(InkCanvasEditingMode.EraseByStroke.ToString());
+
+        }
+
+        /// <summary>
+        /// Evento que é disparado toda vez que o ComboBox é alterao trocando o valor
+        /// do EditingMode para o InkCanvas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void inkCanvasComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine(inkCanvasComboBox.SelectedItem);
+            string itemSelect = inkCanvasComboBox.SelectedItem.ToString();
+
+            if (InkCanvasEditingMode.None.ToString() == itemSelect)
+            {
+                inkCanvas.EditingMode = InkCanvasEditingMode.None;
+            }
+
+            if (InkCanvasEditingMode.Ink.ToString() == itemSelect)
+            {
+                inkCanvas.EditingMode = InkCanvasEditingMode.Ink;
+            }
+
+            if (InkCanvasEditingMode.GestureOnly.ToString() == itemSelect)
+            {
+                inkCanvas.EditingMode = InkCanvasEditingMode.GestureOnly;
+            }
+
+            if (InkCanvasEditingMode.InkAndGesture.ToString() == itemSelect)
+            {
+                inkCanvas.EditingMode = InkCanvasEditingMode.InkAndGesture;
+            }
+
+            if (InkCanvasEditingMode.Select.ToString() == itemSelect)
+            {
+                inkCanvas.EditingMode = InkCanvasEditingMode.Select;
+            }
+
+            if (InkCanvasEditingMode.EraseByPoint.ToString() == itemSelect)
+            {
+                inkCanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
+            }
+
+
+            if (InkCanvasEditingMode.EraseByStroke.ToString() == itemSelect)
+            {
+                inkCanvas.EditingMode = InkCanvasEditingMode.EraseByStroke;
+            }
+        }
+    }
+}
+
+```
+*** Arquivo MainWindow.xaml.cs ***
+```
+<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0" Background="LightYellow">
+            <Label Content="EditingMode:" HorizontalAlignment="Left" Height="30"  VerticalAlignment="Top" Width="80"  />
+            <ComboBox Name="inkCanvasComboBox" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="126" 
+            SelectionChanged="inkCanvasComboBox_SelectionChanged"  />
+        </WrapPanel>
+
+        <InkCanvas Grid.Row="1" Name="inkCanvas" Background="LightYellow" EditingMode="Ink">
+            <Image Source="/components/Images/the-fresh-prince-of-bel-air.jpg" 
+                   InkCanvas.Top="60" InkCanvas.Left="20" Width="400" Height="350"/>
+        </InkCanvas>
+
+    </Grid>
+```
+![SimpleInkCanvas](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-3-layout/31.png)
