@@ -1,0 +1,45 @@
+﻿<Window x:Class="DoubleSplitWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoubleSplitWindow"
+        mc:Ignorable="d"
+        Title="DoubleSplitWindow" Height="350" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <!-- Nesta coluna ficará um GridSplitter por isso uso o tamanho Auto pois quero uma largura mínima -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <!-- (Primeira coluna "0" )Esta é a grade alinhada à esquerda. Não é subdividida com um divisor. -->
+        <Grid Grid.Column="0" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Margin="3" Grid.Row="0">Superior Esquerdo</Button>
+            <Button Margin="3" Grid.Row="1">Infeior Esquerdo</Button>
+        </Grid>
+        
+        <!-- (Segunda coluna "1") Este é o divisor vertical que fica entre as duas grades alinhadas (esquerda e direita). -->
+        <GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"  ShowsPreview="False"></GridSplitter>
+       
+        <!-- (Terceira coluna "2") Esta é a grade alinhada à direita. -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <!-- Nesta linha ficará um GridSplitter por isso uso o tamanho Auto pois quero uma altura mínima -->
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Margin="3">Superior Direito</Button>
+            <Button Grid.Row="2" Margin="3">Inferior Direito</Button>
+            
+            <!-- Este é o divisor horizontal que o subdivide em uma região superior e inferior no lado direito. -->
+            <GridSplitter Grid.Row="1" Height="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" ShowsPreview="False"></GridSplitter>
+        </Grid>
+    </Grid>
+</Window>

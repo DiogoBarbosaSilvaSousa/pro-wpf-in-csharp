@@ -1,0 +1,16 @@
+﻿<Window x:Class="BasicDialogBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BasicDialogBox"
+        mc:Ignorable="d"
+        Title="BasicDialogBox" Height="350" Width="400">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Margin="10,10,2,10" Padding="3">OK</Button>
+            <Button Margin="2,10,10,10" Padding="3">Cancelar</Button>
+        </StackPanel>
+        <TextBox DockPanel.Dock="Top" Margin="10">Isto é um teste.</TextBox>
+    </DockPanel>
+</Window>

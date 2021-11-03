@@ -1,0 +1,25 @@
+﻿<Window x:Class="SimpleGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleGrid"
+        mc:Ignorable="d"
+        Title="SimpleGrid" Height="400" Width="500">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0">Esquerda superior</Button>
+        <Button Grid.Row="0" Grid.Column="1">Meio Esquerdo</Button>
+        <Button Grid.Row="1" Grid.Column="2">Direita inferior</Button>
+        <Button Grid.Row="1" Grid.Column="1">Meio inferior</Button>
+    </Grid>
+</Window>

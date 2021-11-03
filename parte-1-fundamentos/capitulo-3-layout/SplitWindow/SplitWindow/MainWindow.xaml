@@ -1,0 +1,35 @@
+﻿<Window x:Class="SplitWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SplitWindow"
+        mc:Ignorable="d"
+        Title="SplitWindow" Height="350" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <!-- Nesta linha ficará um GridSplitter por isso uso o tamanho Auto pois quero uma altura mínima -->
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100"></ColumnDefinition>
+            <!-- Nesta coluna ficará um GridSplitter por isso uso o tamanho Auto pois quero uma largura mínima -->
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition MinWidth="50"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="0" Grid.Column="2" Margin="3">Direita</Button>
+        <Button Grid.Row="2" Grid.Column="0" Margin="3">Esquerda</Button>
+        <Button Grid.Row="2" Grid.Column="2" Margin="3">Direita</Button>
+
+        <!-- Esse divisor fica na coluna do centro (segunda coluna) ocupando o espaço de três linhas -->
+        <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"  Width="3" VerticalAlignment="Stretch" 
+                      HorizontalAlignment="Center" ShowsPreview="False"></GridSplitter>
+        
+        <!-- Esse divisor fica na linha do meio (segunda linha) ocupando o espaço de três colunas -->
+        <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="3" HorizontalAlignment="Stretch" 
+                      VerticalAlignment="Center" ShowsPreview="False"></GridSplitter>
+    </Grid>
+</Window>

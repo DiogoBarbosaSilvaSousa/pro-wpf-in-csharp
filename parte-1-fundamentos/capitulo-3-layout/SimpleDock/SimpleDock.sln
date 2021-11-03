@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDock", "SimpleDock\SimpleDock.csproj", "{94861FF0-D7D0-442C-A605-9636AA8968B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleDockAlignment", "SimpleDockAlignment\SimpleDockAlignment.csproj", "{AC5BAAC5-E8BD-4277-815D-0689F87611DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94861FF0-D7D0-442C-A605-9636AA8968B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94861FF0-D7D0-442C-A605-9636AA8968B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94861FF0-D7D0-442C-A605-9636AA8968B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94861FF0-D7D0-442C-A605-9636AA8968B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC5BAAC5-E8BD-4277-815D-0689F87611DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC5BAAC5-E8BD-4277-815D-0689F87611DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC5BAAC5-E8BD-4277-815D-0689F87611DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC5BAAC5-E8BD-4277-815D-0689F87611DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7D44B3C-B3B5-464D-AF63-4BE3F4B7CB7C}
+	EndGlobalSection
+EndGlobal
