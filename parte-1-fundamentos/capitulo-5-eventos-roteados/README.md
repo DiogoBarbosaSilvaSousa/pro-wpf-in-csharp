@@ -1,3 +1,5 @@
 # Eventos Roteados
 
 Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)*** - mensagens que são enviadas por um objeto (como um Elemento WPF) para notificar seu código quando algo significativo ocorrer. WPF aprimora o evento .NET modelo com o conceito de ***roteamento de eventos (event routing)***. O roteamento de eventos permite que um evento se origine em um elemento, mas seja criado por outro. Por exemplo, o roteamento de eventos permite que um clique que começa em um botão da barra de ferramentas suba para a barra de ferramentas e, em seguida, para a janela que o contém antes de ser tratado pelo seu código. O roteamento de eventos oferece a flexibilidade de escrever um código bem organizado que lida com eventos no lugar mais conveniente. Também é uma necessidade para trabalhar com o modelo de conteúdo WPF, que permite você construir elementos simples (como um botão) com dezenas de ingredientes distintos, cada um com seu próprio conjunto independente de eventos.
+
+## Bubbling Events (Eventos borbulhantes)
