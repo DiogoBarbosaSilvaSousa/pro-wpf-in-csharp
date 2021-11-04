@@ -4,6 +4,8 @@ Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)**
 
 ## Bubbling Events (Eventos borbulhantes)
 
+![BubbledLabelClick](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/01.png)
+
 ***Arquivo MainWindow.xaml***
 ```
 <Window x:Class="BubbledLabelClick.MainWindow"
