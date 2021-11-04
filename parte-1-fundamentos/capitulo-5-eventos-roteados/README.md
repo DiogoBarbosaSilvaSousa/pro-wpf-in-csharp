@@ -39,7 +39,9 @@ Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)**
         <CheckBox Grid.Row="2" Margin="5" Name="chkHandle">
             Manipulando o primeiro evento
         </CheckBox>
-        <Button Grid.Row="3" Margin="5" Padding="3" HorizontalAlignment="Right" Name="cmdClear" Click="cmdClear_Click">Limpar lista</Button>
+        <Button Grid.Row="3" Margin="5" Padding="3" HorizontalAlignment="Right" Name="cmdClear" Click="cmdClear_Click">
+        Limpar lista
+        </Button>
     </Grid>
 </Window>
 ```
