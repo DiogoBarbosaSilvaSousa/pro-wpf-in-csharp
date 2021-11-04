@@ -5,7 +5,7 @@ Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)**
 ## Bubbling Events (Eventos borbulhantes)
 
 ***Arquivo MainWindow.xaml***
-´´´
+```
 <Window x:Class="BubbledLabelClick.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -42,8 +42,7 @@ Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)**
         <Button Grid.Row="3" Margin="5" Padding="3" HorizontalAlignment="Right" Name="cmdClear" Click="cmdClear_Click">Limpar lista</Button>
     </Grid>
 </Window>
-
-´´´
+```
 
 ***Arquivo MainWindow.xaml.cs***
 ```
