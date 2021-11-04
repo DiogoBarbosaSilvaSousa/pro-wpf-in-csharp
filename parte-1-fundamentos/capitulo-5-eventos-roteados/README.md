@@ -109,3 +109,38 @@ namespace BubbledLabelClick
 
 O exemplo de rótulo extravagante é um exemplo bastante simples de borbulhamento de evento porque todos os elementos apoiam o evento MouseUp. No entanto, muitos controles têm seus próprios eventos mais especializados. O botão é um exemplo - adiciona um evento Click que não é definido por nenhuma classe base. Isso introduz um dilema interessante. Imagine que você envolve uma pilha de botões em um StackPanel. Vocês deseja lidar com todos os cliques de botão em um manipulador de eventos. A abordagem crua é anexar o evento Click de cada botão para o mesmo manipulador de eventos. Mas o evento Click oferece suporte ao borbulhamento de eventos, o que dá a você um melhor opção. Você pode controlar todos os cliques de botão manipulando o evento Click em um nível superior (como o contendo StackPanel).
 Infelizmente, esse código aparentemente óbvio não funciona:
+
+```
+<StackPanel Click="DoSomething" Margin="5">
+ <Button Name="cmd1">Comando 1</Button>
+ <Button Name="cmd2">Comando 2</Button>
+ <Button Name="cmd3">Comando 3</Button>
+</StackPanel>
+```
+
+O problema é que o StackPanel não inclui um evento Click, então isso é interpretado pelo XAML analisador como um erro. A solução é usar uma sintaxe de evento anexado diferente na forma ***ClassName.EventName*** . Aqui está o exemplo corrigido:
+
+```
+<StackPanel  Button.Click="DoSomething" Margin="5">
+        <Button Name="cmd1" Tag="The first button." Margin="5">Comando 1</Button>
+        <Button Name="cmd2" Tag="The second button." Margin="5">Comando 2</Button>
+        <Button Name="cmd3" Tag="The third button." Margin="5">Comando 3</Button>
+</StackPanel>
+```
+
+***Código do método usado na chamada de evento ali eu mostro duas formas de capturar informações uma através do Name do Button outra acessando uma de suas propriedades***
+
+```
+private void DoSomething(object sender, RoutedEventArgs e)
+{
+            Button cmd = (Button)e.OriginalSource;
+            MessageBox.Show((string)cmd.Tag);
+
+            if (e.Source == cmd1)
+            { MessageBox.Show("cmd1"); }
+            else if (e.Source == cmd2)
+            { MessageBox.Show("cmd2"); }
+            else if (e.Source == cmd3)
+            { MessageBox.Show("cmd3"); }
+}
+```
