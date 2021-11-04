@@ -22,7 +22,7 @@ Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)**
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label Margin="5" Grid.Row="0" HorizontalAlignment="Left"  Background="AliceBlue" BorderBrush="Black" BorderThickness="1"
+        <Label Margin="5" Grid.Row="0" HorizontalAlignment="Left" Background="AliceBlue" BorderBrush="Black" BorderThickness="1"
  MouseUp="SomethingClicked">
             <StackPanel MouseUp="SomethingClicked">
                 <TextBlock Margin="3"  MouseUp="SomethingClicked">
