@@ -4,6 +4,11 @@ Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)**
 
 ## Bubbling Events (Eventos borbulhantes)
 
+A Figura abaixo mostra uma janela simples que demonstra o borbulhamento de eventos. Quando você clica em uma parte do rótulo, a sequência de eventos é mostrada em uma caixa de listagem. Depois de clicar na imagem no rótulo é exibida a sequência de eventos na Listbox. O evento MouseUp viaja por cinco níveis, terminando no formulário personalizado BubbledLabelClick. Se você deixar o CheckBox "Manipulando o primeieo evento" só exibirá o primeiro evento do clique caso contrário será exibido os cinco eventos como falado anteriormente.
+
+![BubbledLabelClick](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/02.png)
+
+***Checkbox Marcado***
 ![BubbledLabelClick](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/01.png)
 
 ***Arquivo MainWindow.xaml***
