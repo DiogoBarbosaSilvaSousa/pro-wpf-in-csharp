@@ -28,7 +28,7 @@ Todo desenvolvedor .NET está familiarizado com a ideia de ***eventos (events)**
                 <TextBlock Margin="3"  MouseUp="SomethingClicked">
                     Rótulo de imagem e texto
                 </TextBlock>
-                <Image Source="/components/Images/happyface.png" Stretch="Fill"  MouseUp="SomethingClicked" Width="50" Height="50"/>
+                <Image Source="/components/Images/happyface.png" Stretch="Fill" MouseUp="SomethingClicked" Width="50" Height="50"/>
                 <TextBlock Margin="3"  MouseUp="SomethingClicked">
                     Cortesia do StackPanel
                 </TextBlock>
