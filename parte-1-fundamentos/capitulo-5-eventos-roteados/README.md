@@ -144,3 +144,5 @@ private void DoSomething(object sender, RoutedEventArgs e)
             { MessageBox.Show("cmd3"); }
 }
 ```
+
+![AttachedEvents](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/03.png)
