@@ -9,6 +9,7 @@ A Figura abaixo mostra uma janela simples que demonstra o borbulhamento de event
 ![BubbledLabelClick](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/02.png)
 
 ***Checkbox Marcado***
+
 ![BubbledLabelClick](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/01.png)
 
 ***Arquivo MainWindow.xaml***
