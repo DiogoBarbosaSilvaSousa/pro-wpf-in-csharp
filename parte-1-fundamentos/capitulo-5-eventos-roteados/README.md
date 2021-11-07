@@ -259,3 +259,7 @@ namespace TunneledKeyPress
 ```
 
 ![TunneledKeyPress](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/06.png)
+
+## Manuseio de uma tecla pressionada (Handling a Key Press)
+
+
