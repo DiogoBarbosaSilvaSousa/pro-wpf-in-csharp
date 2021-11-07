@@ -146,3 +146,10 @@ private void DoSomething(object sender, RoutedEventArgs e)
 ```
 
 ![AttachedEvents](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/03.png)
+
+## Tunneling Events (Eventos de tunelamento)
+
+Os eventos de túnel funcionam da mesma forma que os eventos de bolha, mas na direção oposta. Por exemplo, se MouseUp era um evento encapsulado (o que não é), clicar na imagem no exemplo de rótulo extravagante causaria MouseUp para disparar primeiro na janela, depois no Grid, depois no StackPanel e assim por diante, até atingir o fonte real, que é a imagem no rótulo. 
+Os eventos de encapsulamento são fáceis de reconhecer porque começam com a palavra ***Preview***. Além disso o WPF geralmente define eventos de bubbling e tunneling em pares. Isso significa que se você encontrar um evento Borbulhante de MouseUp, você provavelmente também pode encontrar um evento PreviewMouseUp de tunelamento. O evento de tunelamento sempre dispara antes do evento de borbulhamento, conforme mostrado na Figura.
+
+![Contexto dos eventos](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/04.png)
