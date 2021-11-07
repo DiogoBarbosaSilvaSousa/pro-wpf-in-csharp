@@ -118,7 +118,7 @@ Infelizmente, esse código aparentemente óbvio não funciona:
 </StackPanel>
 ```
 
-O problema é que o StackPanel não inclui um evento Click, então isso é interpretado pelo XAML analisador como um erro. A solução é usar uma sintaxe de evento anexado diferente na forma ***ClassName.EventName*** . Aqui está o exemplo corrigido:
+O problema é que o StackPanel não inclui um evento Click, então isso é interpretado pelo analisador XAML como um erro. A solução é usar uma sintaxe de evento anexado diferente na forma ***ClassName.EventName*** . Aqui está o exemplo corrigido:
 
 ```
 <StackPanel  Button.Click="DoSomething" Margin="5">
@@ -144,3 +144,5 @@ private void DoSomething(object sender, RoutedEventArgs e)
             { MessageBox.Show("cmd3"); }
 }
 ```
+
+![AttachedEvents](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/03.png)
