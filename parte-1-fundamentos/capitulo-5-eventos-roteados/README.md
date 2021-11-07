@@ -157,3 +157,103 @@ Os eventos de encapsulamento são fáceis de reconhecer porque começam com a pa
 ***Eventos de Tunelamento***
 
 ![Eventos de Tunelamento](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/05.png)
+
+***Arquivo MainWindow.xaml***
+
+```
+<Window x:Class="TunneledKeyPress.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TunneledKeyPress"
+        mc:Ignorable="d"
+        Title="TunneledKeyPress" Height="650" Width="450" PreviewKeyDown="SomeKeyPressed">
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Margin="5" Background="AliceBlue" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Stretch"
+           PreviewKeyDown="SomeKeyPressed">
+            <StackPanel
+        PreviewKeyDown="SomeKeyPressed">
+                <TextBlock Margin="3" HorizontalAlignment="Center"
+                   PreviewKeyDown="SomeKeyPressed">
+                              Rótulo de imagem e texto
+                </TextBlock>
+                <Image Source="/components/Images/happyface.png" Stretch="Fill"  PreviewKeyDown="SomeKeyPressed"
+                       Width="50" Height="50"/>
+                <DockPanel Margin="0,5,0,0" PreviewKeyDown="SomeKeyPressed">
+                    <TextBlock Margin="3" 
+                     PreviewKeyDown="SomeKeyPressed">
+          Digite aqui:
+                    </TextBlock>
+                    <TextBox PreviewKeyDown="SomeKeyPressed" KeyDown="SomeKeyPressed"></TextBox>
+                </DockPanel>
+            </StackPanel>
+        </Label>
+
+        <ListBox Margin="5" Name="lstMessages" Grid.Row="1"></ListBox>
+        <CheckBox Margin="5" Grid.Row="2" Name="chkHandle">Manipulando o primeiro evento</CheckBox>
+        <Button Click="cmdClear_Click" Grid.Row="3" HorizontalAlignment="Right" Margin="5" Padding="3">Limpar Lista</Button>
+
+    </Grid>
+</Window>
+```
+
+***Arquivo MainWindow.xaml.cs***
+
+```
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace TunneledKeyPress
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        protected int eventCounter = 0;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void SomeKeyPressed(object sender, KeyEventArgs e)
+        {
+            eventCounter++;
+            string message = "#" + eventCounter.ToString() + ":\r\n" +
+            " Sender(Remetente): " + sender.ToString() + "\r\n" +
+            " Source(Fonte): " + e.Source + "\r\n" +
+            " Original Source(Fonte original): " + e.OriginalSource;
+            lstMessages.Items.Add(message);
+            e.Handled = (bool)chkHandle.IsChecked;
+
+        }
+
+        private void cmdClear_Click(object sender, RoutedEventArgs e)
+        {
+            eventCounter = 0;
+            lstMessages.Items.Clear();
+        }
+    }
+}
+```
