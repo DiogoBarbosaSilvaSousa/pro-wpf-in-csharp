@@ -257,3 +257,82 @@ namespace TunneledKeyPress
     }
 }
 ```
+
+![TunneledKeyPress](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/06.png)
+
+## Manuseio de uma tecla pressionada (Handling a Key Press)
+
+A melhor maneira de entender os eventos principais(eventos do teclado - ***key press***) é usar um programa de amostra, como o mostrado na Figura. Ele monitora uma caixa de texto para todos os eventos-chave e relatórios possíveis quando eles ocorrem. A Figura mostra o resultado de digitar um S maiúsculo em uma caixa de texto.
+
+
+Este exemplo ilustra um ponto importante. Os eventos PreviewKeyDown e KeyDown disparam a cada vez que uma tecla é pressionada. No entanto, o evento TextInput é disparado apenas quando um caractere é “digitado” em um elemento. Na verdade, essa ação pode envolver vários pressionamentos de tecla. No exemplo da Figura 5-5, dois pressionamentos de tecla são
+necessário para criar a letra S maiúscula. Primeiro, a tecla Shift é pressionada, seguida pela tecla S. Como resultado, você veja dois eventos KeyDown e KeyUp, mas apenas um evento TextInput. Os eventos PreviewKeyDown, KeyDown, PreviewKeyUp e KeyUp fornecem as mesmas informações por meio do objeto KeyEventArgs. O detalhe mais importante é a propriedade Key, que retorna um valor da enumeração System.Windows.Input.Key que identifica a tecla que foi pressionada ou liberada. Este é o manipulador de eventos que lida com eventos-chave para o exemplo da Figura acima:
+
+```
+private void KeyEvent(object sender, KeyEventArgs e)
+{
+         string message = "Event(Evento): " + e.RoutedEvent + " " +
+         " Key(Tecla): " + e.Key;
+         lstMessages.Items.Add(message);
+}
+```
+
+O valor da Chave(Tecla - ***Key***) não leva em consideração o estado de nenhuma outra chave(Tecla). Por exemplo, não importa se a tecla Shift está atualmente pressionada quando você pressiona a tecla S; de qualquer forma, você obterá a mesma chave valor (Key.S).
+Há mais um pequeno contratempo. Dependendo das configurações do teclado do Windows, pressionar uma tecla causa o "pressionamento de tecla a ser repetido" após um pequeno atraso (manter a tecla pressionada pode causa vários "disparos de eventos"). Por exemplo, manter pressionada a tecla S obviamente coloca um fluxo de S caracteres na caixa de texto. Da mesma forma, pressionar a tecla Shift causa vários pressionamentos de tecla e uma série de Eventos KeyDown. Em um teste do mundo real em que você pressiona Shift + S, sua caixa de texto irá disparar uma série de Eventos KeyDown para a tecla Shift, seguidos por um evento KeyDown para a tecla S, um evento TextInput (ou Evento TextChanged no caso de uma caixa de texto) e, em seguida, um evento KeyUp para as teclas Shift e S. Se você quiser para ignorar essas teclas Shift repetidas, você pode verificar se um pressionamento de tecla é o resultado de uma tecla que está sendo pressionada examinando a propriedade KeyEventArgs.IsRepeat, conforme mostrado aqui:
+
+```
+if ((bool)chkIgnoreRepeat.IsChecked && e.IsRepeat) return;
+```
+
+***Dica*** : Os eventos PreviewKeyDown, KeyDown, PreviewKeyUp e KeyUp são melhores para escrever manipulações de teclado de baixo nível (raramente precisará de um controle personalizado) e manipulação de pressionamentos de teclas especiais.
+
+
+Depois que o evento KeyDown ocorre, o evento PreviewTextInput segue. (O evento TextInput não ocorre, porque o TextBox suprime este evento.) Neste ponto, o texto ainda não apareceu na caixa de controle.  O evento TextInput fornece seu código com um objeto TextCompositionEventArgs. Este objeto inclui uma propriedade Text que fornece o texto processado que está prestes a ser recebido pelo controle. Aqui está o código que adiciona este texto à lista mostrada na Figura anterior:
+
+```
+private void TextInput(object sender, TextCompositionEventArgs e)
+{
+     string message = "Event: " + e.RoutedEvent + " " +
+       " Text: " + e.Text;
+     lstMessages.Items.Add(message);
+}
+```
+
+Idealmente, você usaria PreviewTextInput para realizar a validação em um controle como o TextBox. Para por exemplo, se você estiver construindo uma caixa de texto apenas numérica, pode ter certeza de que o pressionamento de tecla atual não é um letra e definir o sinalizador Handled se for. Infelizmente, o evento PreviewTextInput não dispara para algumas chaves que você pode precisar lidar. Por exemplo, se você pressionar a barra de espaço em uma caixa de texto, você contornará PreviewTextInput completamente. Isso significa que você também precisa lidar com o evento PreviewKeyDown. Infelizmente, é difícil escrever uma lógica de validação robusta em um manipulador de eventos PreviewKeyDown
+porque tudo o que você tem é o valor-chave, que é uma informação de nível bastante baixo. Por exemplo, a chave enumeração distingue entre o teclado numérico e as teclas numéricas que aparecem logo acima do letras em um teclado típico. Isso significa que, dependendo de como você pressiona o número 9, pode obter um valor de Key.D9 ou Key.NumPad9. Verificar todos os valores-chave permitidos é entediante, para dizer o mínimo. Uma opção é usar o KeyConverter para converter o valor da chave em uma string mais útil. Por exemplo, usando KeyConverter.ConvertToString () em Key.D9 e Key.NumPad9 retorna “9” como uma string. Se você apenas usar a conversão Key.ToString (), você obterá o nome de enumeração muito menos útil ("D9" ou “NumPad9”):
+
+```
+KeyConverter converter = new KeyConverter();
+string key = converter.ConvertToString(e.Key);
+```
+
+No entanto, mesmo usar o KeyConverter é um pouco estranho porque você vai acabar com pedaços de texto mais longos (como “Backspace”) para pressionamentos de tecla que não resultam em entrada de texto. O melhor compromisso é lidar com PreviewTextInput (que cuida da maior parte da validação) e use PreviewKeyDown para pressionamentos de tecla que não aumentem PreviewTextInput na caixa de texto (como o barra de espaço). Aqui está uma solução simples que faz isso:
+
+```
+private void pnl_PreviewTextInput(object sender, TextCompositionEventArgs e)
+{
+         short val;
+         if (!Int16.TryParse(e.Text, out val))
+         {
+                 // Disallow non-numeric key presses.
+                 e.Handled = true;
+         }
+}
+
+private void pnl_PreviewKeyDown(object sender, KeyEventArgs e)
+{
+         if (e.Key == Key.Space)
+         {
+                 // Disallow the space key, which doesn't raise a PreviewTextInput event.
+                 e.Handled = true;
+         }
+}
+```
+
+Você pode anexar esses manipuladores de eventos a uma única caixa de texto ou conectá-los a um contêiner (como um StackPanel que contém várias caixas de texto apenas numéricas) para maior eficiência.
+
+***Nota***
+>Esse comportamento de manipulação de teclas pode parecer desnecessariamente estranho (e é). Uma das razões pelas quais o
+O TextBox não fornece um melhor manuseio de chaves é que o WPF se concentra na vinculação de dados, um recurso que permite que você conecte
+controles como o TextBox para objetos personalizados. Quando você usa essa abordagem, a validação geralmente é fornecida pelo
+objeto vinculado, os erros são sinalizados por uma exceção e dados inválidos acionam uma mensagem de erro que aparece em algum lugar na interface do usuário. Infelizmente, não há uma maneira fácil (no momento) de combinar a vinculação de dados de alto nível útil recurso com o manuseio do teclado de nível inferior que seria necessário para evitar que o usuário digite completamente alguns caracteres.
