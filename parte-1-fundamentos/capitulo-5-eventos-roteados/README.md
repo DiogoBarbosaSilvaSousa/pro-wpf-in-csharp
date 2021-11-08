@@ -338,6 +338,10 @@ O TextBox não fornece um melhor manuseio de chaves é que o WPF se concentra na
 controles como o TextBox para objetos personalizados. Quando você usa essa abordagem, a validação geralmente é fornecida pelo
 objeto vinculado, os erros são sinalizados por uma exceção e dados inválidos acionam uma mensagem de erro que aparece em algum lugar na interface do usuário. Infelizmente, não há uma maneira fácil (no momento) de combinar a vinculação de dados de alto nível útil recurso com o manuseio do teclado de nível inferior que seria necessário para evitar que o usuário digite completamente alguns caracteres.
 
+**Código completo para criação da janela**
+
+![KeyPressEvents](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/07.png)
+
 ***Arquivo MainWindow.xaml***
 ```
 <Window x:Class="KeyPressEvents.MainWindow"
