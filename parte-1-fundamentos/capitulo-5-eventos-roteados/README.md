@@ -264,6 +264,7 @@ namespace TunneledKeyPress
 
 A melhor maneira de entender os eventos principais(eventos do teclado - ***key press***) é usar um programa de amostra, como o mostrado na Figura. Ele monitora uma caixa de texto para todos os eventos-chave e relatórios possíveis quando eles ocorrem. A Figura mostra o resultado de digitar um S maiúsculo em uma caixa de texto.
 
+![KeyPressEvents](https://github.com/DiogoBarbosaSilvaSousa/pro-wpf-in-csharp/blob/main/parte-1-fundamentos/capitulo-5-eventos-roteados/07.png)
 
 Este exemplo ilustra um ponto importante. Os eventos PreviewKeyDown e KeyDown disparam a cada vez que uma tecla é pressionada. No entanto, o evento TextInput é disparado apenas quando um caractere é “digitado” em um elemento. Na verdade, essa ação pode envolver vários pressionamentos de tecla. No exemplo da Figura 5-5, dois pressionamentos de tecla são
 necessário para criar a letra S maiúscula. Primeiro, a tecla Shift é pressionada, seguida pela tecla S. Como resultado, você veja dois eventos KeyDown e KeyUp, mas apenas um evento TextInput. Os eventos PreviewKeyDown, KeyDown, PreviewKeyUp e KeyUp fornecem as mesmas informações por meio do objeto KeyEventArgs. O detalhe mais importante é a propriedade Key, que retorna um valor da enumeração System.Windows.Input.Key que identifica a tecla que foi pressionada ou liberada. Este é o manipulador de eventos que lida com eventos-chave para o exemplo da Figura acima:
@@ -336,3 +337,104 @@ Você pode anexar esses manipuladores de eventos a uma única caixa de texto ou 
 O TextBox não fornece um melhor manuseio de chaves é que o WPF se concentra na vinculação de dados, um recurso que permite que você conecte
 controles como o TextBox para objetos personalizados. Quando você usa essa abordagem, a validação geralmente é fornecida pelo
 objeto vinculado, os erros são sinalizados por uma exceção e dados inválidos acionam uma mensagem de erro que aparece em algum lugar na interface do usuário. Infelizmente, não há uma maneira fácil (no momento) de combinar a vinculação de dados de alto nível útil recurso com o manuseio do teclado de nível inferior que seria necessário para evitar que o usuário digite completamente alguns caracteres.
+
+***Arquivo MainWindow.xaml***
+```
+<Window x:Class="KeyPressEvents.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyPressEvents"
+        mc:Ignorable="d"
+       Title="KeyPressEvents" Height="387" Width="368" 
+    >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DockPanel Margin="5">
+            <TextBlock Margin="3" >
+              Digite aqui:
+            </TextBlock>
+            <TextBox PreviewKeyDown="KeyEvent" KeyDown="KeyEvent" 
+                     PreviewKeyUp="KeyEvent" KeyUp="KeyEvent"
+                     PreviewTextInput="TextInput"
+                     TextChanged="TextChanged"></TextBox>
+        </DockPanel>
+
+        <ListBox Margin="5" Name="lstMessages" Grid.Row="1"></ListBox>
+        <CheckBox Margin="5" Name="chkIgnoreRepeat" Grid.Row="2">Ignorar teclas repetidas</CheckBox>
+        <Button Click="cmdClear_Click" Grid.Row="3" HorizontalAlignment="Right" Margin="5" Padding="3">Limpar Lista</Button>
+
+    </Grid>
+</Window>
+
+```
+
+***Arquivo MainWindow.xaml.cs***
+
+```
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace KeyPressEvents
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void KeyEvent(object sender, KeyEventArgs e)
+        {
+            if ((bool)chkIgnoreRepeat.IsChecked && e.IsRepeat) return;
+
+            string message = //"At: " + e.Timestamp.ToString() +
+                "Event(Evento): " + e.RoutedEvent + " " +
+                " Key(Tecla): " + e.Key;
+            lstMessages.Items.Add(message);
+        }
+
+        private void TextInput(object sender, TextCompositionEventArgs e)
+        {
+            string message = //"At: " + e.Timestamp.ToString() +
+                "Event(Evento): " + e.RoutedEvent + " " +
+                " Text(Texto): " + e.Text;
+            lstMessages.Items.Add(message);
+        }
+
+        private void TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string message =
+                "Event(Evento): " + e.RoutedEvent;
+            lstMessages.Items.Add(message);
+        }
+
+        private void cmdClear_Click(object sender, RoutedEventArgs e)
+        {
+            lstMessages.Items.Clear();
+        }
+    }
+}
+```
